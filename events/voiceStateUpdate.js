@@ -4,7 +4,7 @@ module.exports = {
     execute(oldVoiceState, newVoiceState) {
         let newState = newVoiceState.member;
         let oldState = oldVoiceState.member;
-        const voice = newVoiceState.guild.roles.cache.get('975898168413814784');
+        const voice = newVoiceState.guild.roles.cache.get('948585787111391272');
 
         if (newVoiceState.channel) {
             newState.roles.add(voice);

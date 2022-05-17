@@ -3,7 +3,7 @@ module.exports = {
 	execute(interaction) {
 		console.log(`${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`);
 		if (!interaction.isCommand()) return;
-	
+
 		if (interaction.commandName === 'ping') {
 			return interaction.reply('Pong!');
 		}
