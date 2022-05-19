@@ -1,12 +1,49 @@
+const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
+
 module.exports = {
     name: 'bonfire',
     execute(interaction, client) {
+        if (!interaction.isCommand()) return;
+
+        if (interaction.commandName === 'bonfire') {
+			const row = new MessageActionRow()
+				.addComponents(
+					new MessageButton()
+						.setCustomId('bowman')
+						.setLabel('Bowman')
+						.setStyle('SECONDARY'),
+
+					new MessageButton()
+						.setCustomId('magician')
+						.setLabel('Magician')
+						.setStyle('SECONDARY'),
+
+					new MessageButton()
+						.setCustomId('thief')
+						.setLabel('Thief')
+						.setStyle('SECONDARY'),
+
+					new MessageButton()
+						.setCustomId('warrior')
+						.setLabel('Warrior')
+						.setStyle('SECONDARY'),
+
+					new MessageButton()
+						.setCustomId('pirate')
+						.setLabel('Pirate')
+						.setStyle('SECONDARY'),
+				);
+
+			const embedMessage = new MessageEmbed()
+				.setColor("#f1c40f")
+				.setTitle("Howdy, casul.")
+				.setFooter({ text: "Choose your class :" })
+				.setImage('https://cdn.discordapp.com/attachments/771978143699042334/950612233518448670/bonfire.png');
+			interaction.channel.send({ embeds: [embedMessage], components: [row] });
+		}
+
         if (interaction.isButton()) {
-            booster = "756223561911500861";
-            explorer = "841722936607637514";
             casul = '771985317489541120';
-            voice = '948585787111391272';
-            mod = '797925442962194434';
             beginner = "771985317489541120";
 
             bowman = "771931086271938561";
@@ -17,19 +54,7 @@ module.exports = {
 
             member = interaction.member;
 
-            if (interaction.customId == "reroll") {
-                interaction.guild.roles.fetch(beginner).then(role => {
-                    if (member.roles.cache.has(booster)) {
-                        if (member.roles.cache.has(mod)) {
-                            member.roles.set([role, explorer, booster, mod]);
-                        } else {
-                            member.roles.set([role, explorer, booster]);
-                        }
-                    } else {
-                        member.roles.set([role, explorer]);
-                    };
-                });
-            } else if (interaction.customId == "bowman") {
+            if (interaction.customId == "bowman") {
                 interaction.guild.roles.fetch(bowman).then(role => {
                     member.roles.add(role);
                     member.roles.remove(beginner);

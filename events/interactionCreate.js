@@ -30,59 +30,5 @@ module.exports = {
 
 			interaction.reply({ content: 'You ran the button command!', components: [row] });
 		}
-
-		if (interaction.commandName === 'bonfire') {
-			const row = new MessageActionRow()
-				.addComponents(
-					new MessageButton()
-						.setCustomId('bowman')
-						.setLabel('Bowman')
-						.setStyle('SECONDARY'),
-
-					new MessageButton()
-						.setCustomId('magician')
-						.setLabel('Magician')
-						.setStyle('SECONDARY'),
-
-					new MessageButton()
-						.setCustomId('thief')
-						.setLabel('Thief')
-						.setStyle('SECONDARY'),
-
-					new MessageButton()
-						.setCustomId('warrior')
-						.setLabel('Warrior')
-						.setStyle('SECONDARY'),
-
-					new MessageButton()
-						.setCustomId('pirate')
-						.setLabel('Pirate')
-						.setStyle('SECONDARY'),
-				);
-
-			const embedMessage = new MessageEmbed()
-				.setColor("#f1c40f")
-				.setTitle("Howdy, casul.")
-				.setFooter({ text: "Choose your class :" })
-				.setImage('https://cdn.discordapp.com/attachments/771978143699042334/950612233518448670/bonfire.png');
-			interaction.channel.send({ embeds: [embedMessage], components: [row] });
-		}
-
-		if (interaction.commandName === 'reroll') {
-			const row = new MessageActionRow()
-				.addComponents(
-					new MessageButton()
-						.setCustomId('reroll')
-						.setEmoji('🎲')
-						.setStyle('SECONDARY'),
-				);
-
-			const embedMessage = new MessageEmbed()
-				.setColor("#f1c40f")
-				.setTitle("Change of heart ?")
-				.setFooter({ text: "Roll the die :" })
-				.setImage('https://cdn.discordapp.com/attachments/771978143699042334/950612233518448670/bonfire.png');
-			interaction.channel.send({ embeds: [embedMessage], components: [row] });
-		}
 	},
 };
