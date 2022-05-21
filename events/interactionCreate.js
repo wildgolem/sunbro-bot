@@ -1,26 +1,26 @@
 module.exports = {
-	name: 'interactionCreate',
-	on: true,
-	async execute(interaction, client) {
-		console.log(`${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`);
+    name: 'interactionCreate',
+    on: true,
+    async execute(interaction, client) {
+        console.log(`${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`);
 
-		if (interaction.commandName === 'ping') {
-			return interaction.reply('Pong!');
-		}
+        if (interaction.commandName === 'ping') {
+            return interaction.reply('Pong!');
+        }
 
-		if (interaction.commandName === 'server') {
-			return interaction.reply(`Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}`);
-		}
+        if (interaction.commandName === 'server') {
+            return interaction.reply(`Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}`);
+        }
 
-		// class
+        // class
         if (interaction.isButton()) {
             booster = "756223561911500861";
-			mod = '797925442962194434';
+            mod = '797925442962194434';
             explorer = "841722936607637514";
             voice = '948585787111391272';
 
-			casul = '771985317489541120';
-			bowman = "771931086271938561";
+            casul = '771985317489541120';
+            bowman = "771931086271938561";
             magician = "771931082982686770";
             thief = "771931084657131550";
             warrior = "771931073587838987";
@@ -69,8 +69,8 @@ module.exports = {
             interaction.deferUpdate();
         };
 
-		//error catch
-		if (!interaction.isCommand()) return;
+        //error catch
+        if (!interaction.isCommand()) return;
 
         const command = client.commands.get(interaction.commandName);
 
@@ -82,5 +82,5 @@ module.exports = {
             console.error(error);
             await interaction.reply({ content: "There was an error while executing this command!", ephemeral: true });
         }
-	},
+    },
 };
