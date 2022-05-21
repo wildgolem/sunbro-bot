@@ -1,9 +1,10 @@
+const { explorer, voice, casul } = require('../config.json');
 module.exports = {
     name: "guildMemberUpdate",
     on: true,
     execute(oldMember, newMember) {
         if (!newMember.user.bot) {
-            if (newMember.roles.cache.has('771985317489541120') && newMember.roles.cache.has('948585787111391272')) {
+            if (newMember.roles.cache.has(casul) && newMember.roles.cache.has(voice)) {
                 newMember.voice.disconnect();
                 newMember.send({
                     embeds: [{
@@ -11,7 +12,7 @@ module.exports = {
                         description: `${newMember.user.username},\nYou need a class to join a voice chat.\nGo to <#949940867769188422> at once!`
                     }]
                 }).catch(err => { });
-            } else if (newMember.roles.cache.has('948585787111391272') && !newMember.roles.cache.has('841722936607637514')) {
+            } else if (!newMember.roles.cache.has(explorer) && newMember.roles.cache.has(voice)) {
                 newMember.voice.disconnect();
                 newMember.send({
                     embeds: [{
