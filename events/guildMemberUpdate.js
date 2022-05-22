@@ -29,7 +29,7 @@ module.exports = {
                             icon_url: `${newMember.user.avatarURL()}`,
                         }
                     }]
-                }).then(msg => { setTimeout(() => msg.delete(), 60000) }).catch(err => { });
+                }).then(msg => { setTimeout(() => msg.delete(), 30000) }).catch(err => { });
             } else if (!newMember.roles.cache.has(explorer) && newMember.roles.cache.has(voice)) {
                 newMember.voice.disconnect();
                 newMember.send({
