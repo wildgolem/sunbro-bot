@@ -36,7 +36,7 @@ module.exports = {
     const embedMessage = new MessageEmbed()
       .setColor("#f1c40f")
       .setTitle("Howdy, casul.")
-      .setFooter({text: "Choose your class :"})
+      .setFooter({text: "Select your class :"})
       .setImage('https://cdn.discordapp.com/attachments/771978143699042334/950612233518448670/bonfire.png');
 		await interaction.channel.send({ embeds: [embedMessage], components: [row] });
 	},

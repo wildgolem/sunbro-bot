@@ -21,14 +21,15 @@ module.exports = {
 
             if (interaction.customId == "reroll") {
                 interaction.guild.roles.fetch(casul).then(role => {
+                    member.voice.disconnect();
                     if (member.roles.cache.has(booster)) {
                         if (member.roles.cache.has(mod)) {
-                            member.roles.set([role, explorer, booster, mod, voice]);
+                            member.roles.set([role, explorer, booster, mod]);
                         } else {
-                            member.roles.set([role, explorer, booster, voice]);
+                            member.roles.set([role, explorer, booster]);
                         }
                     } else {
-                        member.roles.set([role, explorer, voice]);
+                        member.roles.set([role, explorer]);
                     };
                 });
             } else if (interaction.customId == "bowman") {

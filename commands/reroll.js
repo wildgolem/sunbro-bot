@@ -11,7 +11,7 @@ module.exports = {
 				new MessageButton()
 					.setCustomId('reroll')
 					.setEmoji('🎲')
-					.setStyle('SECONDARY'),
+					.setStyle('SUCCESS'),
 			);
     const embedMessage = new MessageEmbed()
       .setColor("#f1c40f")
