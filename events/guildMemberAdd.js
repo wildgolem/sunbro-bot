@@ -11,7 +11,7 @@ module.exports = {
                     name: `${member.user.username}`,
                     icon_url: `${member.user.avatarURL()}`,
                 },
-                description: `Welcome to the server, casul!\nDo not forget to choose your class at \n<#949940867769188422>.`
+                description: `Praise the sun, casul!\nDo not forget to visit \n<#949940867769188422>.`
             }]
         }).catch(err => { });
     }
