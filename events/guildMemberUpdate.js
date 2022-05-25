@@ -1,4 +1,4 @@
-const { freemarket, explorer, voice, casul } = require('../config.json');
+const { freemarket, explorer, voice } = require('../config.json');
 module.exports = {
     name: "guildMemberUpdate",
     on: true,
@@ -16,7 +16,7 @@ module.exports = {
                             icon_url: `${newMember.user.avatarURL()}`,
                         }
                     }]
-                }).then(msg => { setTimeout(() => msg.delete(), 30000) }).catch(err => { });
+                }).then(msg => { setTimeout(() => msg.delete().catch(err => { }), 30000) });
             } else if (!newMember.roles.cache.has(explorer) && newMember.roles.cache.has(voice)) {
                 newMember.voice.disconnect();
                 newMember.send({
