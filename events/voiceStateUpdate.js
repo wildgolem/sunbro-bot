@@ -1,4 +1,4 @@
-const { voice, solo, jpq, mod, bowman, magician, thief, warrior, pirate } = require('../config.json');
+const { voice, jpq, mod, bowman, magician, thief, warrior, pirate } = require('../config.json');
 const { Collection } = require('discord.js');
 const voiceCollection = new Collection();
 module.exports = {
@@ -7,10 +7,8 @@ module.exports = {
 	async execute(oldVoiceState, newVoiceState) {
 		if (newVoiceState.channel) {
 			newVoiceState.member.roles.add(voice);
-			//newVoiceState.member.roles.remove(solo);
 		} else if (oldVoiceState.channel) {
 			newVoiceState.member.roles.remove(voice);
-			//newVoiceState.member.roles.add(solo);
 		};
 
 		if (!oldVoiceState.channel && newVoiceState.channel.id === jpq) {

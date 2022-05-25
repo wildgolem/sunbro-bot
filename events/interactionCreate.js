@@ -1,4 +1,4 @@
-const { booster, mod, explorer, solo, casul, bowman, magician, thief, warrior, pirate } = require('../config.json');
+const { booster, mod, explorer, casul, bowman, magician, thief, warrior, pirate } = require('../config.json');
 module.exports = {
     name: 'interactionCreate',
     on: true,
@@ -24,15 +24,15 @@ module.exports = {
                     member.voice.disconnect();
                     if (member.roles.cache.has(booster)) {
                         if (member.roles.cache.has(mod)) {
-                            member.roles.set([role, explorer, solo, booster, mod]);
+                            member.roles.set([role, explorer, booster, mod]);
                         } else {
-                            member.roles.set([role, explorer, solo, booster]);
+                            member.roles.set([role, explorer, booster]);
                         }
                     } else {
                         if (member.roles.cache.has(mod)) {
-                            member.roles.set([role, explorer, solo, mod]);
+                            member.roles.set([role, explorer, mod]);
                         } else {
-                            member.roles.set([role, explorer, solo]);
+                            member.roles.set([role, explorer]);
                         }
                     };
                 });
