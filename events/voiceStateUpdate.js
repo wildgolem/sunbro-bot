@@ -7,13 +7,14 @@ module.exports = {
 	async execute(oldVoiceState, newVoiceState) {
 		if (newVoiceState.channel) {
 			newVoiceState.member.roles.add(voice);
-			newVoiceState.member.roles.remove(solo);
+			//newVoiceState.member.roles.remove(solo);
 		} else if (oldVoiceState.channel) {
 			newVoiceState.member.roles.remove(voice);
-			newVoiceState.member.roles.add(solo);
+			//newVoiceState.member.roles.add(solo);
 		};
 
 		if (!oldVoiceState.channel && newVoiceState.channel.id === jpq) {
+			if (newVoiceState.guild.channels.cache.find(channel => channel.name === `🔑${newVoiceState.member.user.username}'s Party`)) return;
 			const temp = await newVoiceState.guild.channels.create(`🔑${newVoiceState.member.user.username}'s Party`, {
 				type: "GUILD_VOICE",
 				parent: newVoiceState.channel.parent,
