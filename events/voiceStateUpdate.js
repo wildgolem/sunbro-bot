@@ -5,7 +5,7 @@ module.exports = {
 	name: "voiceStateUpdate",
 	on: true,
 	async execute(oldVoiceState, newVoiceState) {
-		if (!newVoiceState.member.user.bot){
+		if (!newVoiceState.member.user.bot) {
 			if (newVoiceState.channel) {
 				newVoiceState.member.roles.add(voice);
 			} else if (oldVoiceState.channel) {
@@ -49,7 +49,7 @@ module.exports = {
 			newVoiceState.member.voice.setChannel(temp);
 			voiceCollection.set(newVoiceState.id, temp.id);
 		} else if (!newVoiceState.channel) {
-			if (oldVoiceState.channel.id === voiceCollection.get(newVoiceState.id)) {
+			if (oldVoiceState.channel.id === voiceCollection.get(newVoiceState.id) || oldVoiceState != newVoiceState) {
 				const members = oldVoiceState.channel?.members.filter((m) => !m.user.bot).map((m) => m.id);
 				if (members.length > 0) {
 					let randomID = members[Math.floor(Math.random() * members.length)];
@@ -59,8 +59,10 @@ module.exports = {
 					voiceCollection.set(oldVoiceState.id, null);
 					voiceCollection.set(randomMember.id, oldVoiceState.channel.id);
 				} else {
-					voiceCollection.set(oldVoiceState.id, null);
-					oldVoiceState.channel.delete()
+					if (oldVoiceState.channel.id != rpq) {
+						voiceCollection.set(oldVoiceState.id, null);
+						oldVoiceState.channel.delete()
+					}
 				};
 			};
 		};
