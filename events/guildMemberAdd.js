@@ -14,5 +14,7 @@ module.exports = {
                 image: { url: 'https://cdn.discordapp.com/attachments/979172537193877504/979174871068196914/praise_the_sun.png' }
             }]
         }).catch(err => { });
+
+        guild.channels.cache.get('979459775525957732').setName(`💠 Members:  ${member.guild.members.cache.filter(member => !member.user.bot).size}`)
     }
 };

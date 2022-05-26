@@ -24,13 +24,13 @@ module.exports = {
                     member.voice.disconnect();
                     if (member.roles.cache.has(booster)) {
                         if (member.roles.cache.has(mod)) {
-                            if(member.roles.cache.has(explorer)){
+                            if (member.roles.cache.has(explorer)) {
                                 member.roles.set([role, explorer, booster, mod]);
                             } else {
                                 member.roles.set([role, booster, mod]);
                             }
                         } else {
-                            if(member.roles.cache.has(explorer)) {
+                            if (member.roles.cache.has(explorer)) {
                                 member.roles.set([role, explorer, booster]);
                             } else {
                                 member.roles.set([role, booster]);
@@ -38,13 +38,13 @@ module.exports = {
                         }
                     } else {
                         if (member.roles.cache.has(mod)) {
-                            if(member.roles.cache.has(explorer)) {
+                            if (member.roles.cache.has(explorer)) {
                                 member.roles.set([role, explorer, mod]);
                             } else {
                                 member.roles.set([role, mod]);
                             }
                         } else {
-                            if(member.roles.cache.has(explorer)) {
+                            if (member.roles.cache.has(explorer)) {
                                 member.roles.set([role, explorer]);
                             } else {
                                 member.roles.set([role]);
