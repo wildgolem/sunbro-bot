@@ -24,15 +24,31 @@ module.exports = {
                     member.voice.disconnect();
                     if (member.roles.cache.has(booster)) {
                         if (member.roles.cache.has(mod)) {
-                            member.roles.set([role, explorer, booster, mod]);
+                            if(member.roles.cache.has(explorer)){
+                                member.roles.set([role, explorer, booster, mod]);
+                            } else {
+                                member.roles.set([role, booster, mod]);
+                            }
                         } else {
-                            member.roles.set([role, explorer, booster]);
+                            if(member.roles.cache.has(explorer)) {
+                                member.roles.set([role, explorer, booster]);
+                            } else {
+                                member.roles.set([role, booster]);
+                            }
                         }
                     } else {
                         if (member.roles.cache.has(mod)) {
-                            member.roles.set([role, explorer, mod]);
+                            if(member.roles.cache.has(explorer)) {
+                                member.roles.set([role, explorer, mod]);
+                            } else {
+                                member.roles.set([role, mod]);
+                            }
                         } else {
-                            member.roles.set([role, explorer]);
+                            if(member.roles.cache.has(explorer)) {
+                                member.roles.set([role, explorer]);
+                            } else {
+                                member.roles.set([role]);
+                            }
                         }
                     };
                 });
