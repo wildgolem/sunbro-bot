@@ -1,4 +1,4 @@
-const { voice, jpq, mod, bowman, magician, thief, warrior, pirate } = require('../config.json');
+const { voice, rpq, mod, bowman, magician, thief, warrior, pirate } = require('../config.json');
 const { Collection } = require('discord.js');
 const voiceCollection = new Collection();
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
 			};
 		}
 
-		if (!oldVoiceState.channel && newVoiceState.channel.id === jpq) {
+		if (!oldVoiceState.channel && newVoiceState.channel.id === rpq) {
 			if (newVoiceState.guild.channels.cache.find(channel => channel.name === `🔑${newVoiceState.member.user.username}'s Party`)) return;
 			const temp = await newVoiceState.guild.channels.create(`🔑${newVoiceState.member.user.username}'s Party`, {
 				type: "GUILD_VOICE",
