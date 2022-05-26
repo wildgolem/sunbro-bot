@@ -15,6 +15,6 @@ module.exports = {
             }]
         }).catch(err => { });
 
-        guild.channels.cache.get('979459775525957732').setName(`💠 Members:  ${member.guild.members.cache.filter(member => !member.user.bot).size}`)
+        member.guild.channels.cache.get('979459775525957732').setName(`💠 Members:  ${member.guild.members.cache.filter(member => !member.user.bot).size}`)
     }
 };

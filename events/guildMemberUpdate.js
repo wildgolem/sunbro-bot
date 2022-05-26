@@ -16,7 +16,7 @@ module.exports = {
                             icon_url: `${newMember.user.avatarURL()}`,
                         }
                     }]
-                }).then(msg => { setTimeout(() => msg.delete().catch(err => { }), 30000) });
+                }).then(msg => { setTimeout(() => msg.delete().catch(err => { }), 30000) }).catch(err => { });
             } else if (!newMember.roles.cache.has(explorer) && newMember.roles.cache.has(voice)) {
                 newMember.voice.disconnect();
                 newMember.send({
