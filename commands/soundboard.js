@@ -7,7 +7,7 @@ module.exports = {
 		.setDescription('Replies with roles that user can set.'),
 	async execute(message) {
 		const channel = message.member.voice.channel;
-		if(!channel) return message.channel.send('Bro join a voice channel smh :wink:');
+		if(!channel) return;
 
 		const player = voiceDiscord.createAudioPlayer();
 		const resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/979172537193877504/979173073968308274/emotional_damage.mp3', { inlineVolume: true });
