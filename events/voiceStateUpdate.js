@@ -5,11 +5,13 @@ module.exports = {
 	name: "voiceStateUpdate",
 	on: true,
 	async execute(oldVoiceState, newVoiceState) {
-		if (newVoiceState.channel) {
-			newVoiceState.member.roles.add(voice);
-		} else if (oldVoiceState.channel) {
-			newVoiceState.member.roles.remove(voice);
-		};
+		if (!newVoiceState.member.user.bot){
+			if (newVoiceState.channel) {
+				newVoiceState.member.roles.add(voice);
+			} else if (oldVoiceState.channel) {
+				newVoiceState.member.roles.remove(voice);
+			};
+		}
 
 		if (!oldVoiceState.channel && newVoiceState.channel.id === jpq) {
 			if (newVoiceState.guild.channels.cache.find(channel => channel.name === `🔑${newVoiceState.member.user.username}'s Party`)) return;
