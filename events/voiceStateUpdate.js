@@ -65,6 +65,18 @@ module.exports = {
 					}
 				};
 			};
+		} else if (!oldVoiceState.channel && newVoiceState.channel.id != rpq) {
+			if (newVoiceState.channel.members.size === 1) {
+				newVoiceState.channel.setName(`🔑${newVoiceState.member.user.username}'s Party`).catch((e) => null);
+				voiceCollection.set(newVoiceState.id, newVoiceState.channel.id);
+			}
+		} else {
+			if (oldVoiceState.channel.id === voiceCollection.get(newVoiceState.id) || oldVoiceState != newVoiceState) {
+				if (oldVoiceState.channel.id != rpq && oldVoiceState.channel.members.size === 0) {
+					voiceCollection.set(oldVoiceState.id, null);
+					oldVoiceState.channel.delete()
+				}
+			}
 		};
 	}
 };
