@@ -43,7 +43,7 @@ module.exports = {
 						allow: ['VIEW_CHANNEL', 'CONNECT', 'SPEAK', 'STREAM', 'USE_VAD']
 					},
 				]
-			});
+			}).catch(err => { });
 			newVoiceState.member.voice.setChannel(temp);
 			voiceCollection.set(newVoiceState.id, temp.id);
 		} else if (!newVoiceState.channel) {
