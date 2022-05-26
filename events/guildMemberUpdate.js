@@ -27,7 +27,7 @@ module.exports = {
                             icon_url: `${newMember.user.avatarURL()}`,
                         },
                         description: `You cannot stay invisible in a voice chat,\n...go online and try again.`,
-                        image: { url: 'https://cdn.discordapp.com/attachments/771978143699042334/977739605019349033/gitgud.png' }
+                        image: { url: 'https://cdn.discordapp.com/attachments/979172537193877504/979172790408187954/gitgud.png' }
                     }]
                 }).catch(err => { });
             };

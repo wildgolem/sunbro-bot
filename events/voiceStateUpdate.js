@@ -15,6 +15,7 @@ module.exports = {
 			if (newVoiceState.guild.channels.cache.find(channel => channel.name === `🔑${newVoiceState.member.user.username}'s Party`)) return;
 			const temp = await newVoiceState.guild.channels.create(`🔑${newVoiceState.member.user.username}'s Party`, {
 				type: "GUILD_VOICE",
+				bitrate: 128000,
 				parent: newVoiceState.channel.parent,
 				permissionOverwrites: [
 					{

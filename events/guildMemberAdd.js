@@ -11,7 +11,7 @@ module.exports = {
                     name: `Praise the sun, ${member.user.username}!`,
                     icon_url: `${member.user.avatarURL()}`,
                 },
-                image: { url: 'https://cdn.discordapp.com/attachments/771978143699042334/949879763898605698/praisethesun.png' }
+                image: { url: 'https://cdn.discordapp.com/attachments/979172537193877504/979174871068196914/praise_the_sun.png' }
             }]
         }).catch(err => { });
     }

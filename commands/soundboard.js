@@ -10,7 +10,7 @@ module.exports = {
 		if(!channel) return message.channel.send('Bro join a voice channel smh :wink:');
 
 		const player = voiceDiscord.createAudioPlayer();
-		const resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/771978143699042334/978918117508001812/Emotional_Damage.mp3', { inlineVolume: true });
+		const resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/979172537193877504/979173073968308274/emotional_damage.mp3', { inlineVolume: true });
 
 		const connection = voiceDiscord.joinVoiceChannel({
 			channelId: channel.id,
