@@ -15,8 +15,8 @@ module.exports = {
 
 		if (!oldVoiceState.channel && newVoiceState.channel.id === party) {
 			console.log(`${newVoiceState.member.user.username} created party.`);
-			if (newVoiceState.guild.channels.cache.find(channel => channel.name === `🔑${newVoiceState.member.user.username}'s Party`)) return;
-			const temp = await newVoiceState.guild.channels.create(`🔑${newVoiceState.member.user.username}'s Party`, {
+			if (newVoiceState.guild.channels.cache.find(channel => channel.name === `🔓${newVoiceState.member.user.username}'s Party`)) return;
+			const temp = await newVoiceState.guild.channels.create(`🔓${newVoiceState.member.user.username}'s Party`, {
 				type: "GUILD_VOICE",
 				bitrate: 128000,
 				parent: newVoiceState.channel.parent,
@@ -57,7 +57,7 @@ module.exports = {
 					let randomID = members[Math.floor(Math.random() * members.length)];
 					let randomMember = oldVoiceState.guild.members.cache.get(randomID);
 					randomMember.voice.setChannel(oldVoiceState.channel);
-					oldVoiceState.channel.setName(`🔑${randomMember.user.username}'s Party`).catch((e) => null);
+					oldVoiceState.channel.setName(`🔓${randomMember.user.username}'s Party`).catch((e) => null);
 					voiceCollection.set(oldVoiceState.id, null);
 					voiceCollection.set(randomMember.id, oldVoiceState.channel.id);
 				} else if (oldVoiceState.channel.id != party) {
@@ -72,7 +72,7 @@ module.exports = {
 			voiceCollection.set(oldVoiceState.id, null);
 			oldVoiceState.channel.delete()
 			if (newVoiceState.channel.id === party) {
-				const temp = await newVoiceState.guild.channels.create(`🔑${newVoiceState.member.user.username}'s Party`, {
+				const temp = await newVoiceState.guild.channels.create(`🔓${newVoiceState.member.user.username}'s Party`, {
 					type: "GUILD_VOICE",
 					bitrate: 128000,
 					parent: newVoiceState.channel.parent,
@@ -108,7 +108,7 @@ module.exports = {
 			}
 		} else if (oldVoiceState.channel.id != party && newVoiceState.channel.id === party) {
 			console.log(`${newVoiceState.member.user.username} remade party.`);
-			const temp = await newVoiceState.guild.channels.create(`🔑${newVoiceState.member.user.username}'s Party`, {
+			const temp = await newVoiceState.guild.channels.create(`🔓${newVoiceState.member.user.username}'s Party`, {
 				type: "GUILD_VOICE",
 				bitrate: 128000,
 				parent: newVoiceState.channel.parent,
