@@ -2,8 +2,9 @@ const { freemarket } = require('../config.json');
 module.exports = {
     name: "guildMemberRemove",
     on: true,
-    async execute(member) {
-        await member.guild.channels.cache.get(freemarket).send({
+    execute(member) {
+        console.log(`${member.user.username} left the server.`);
+        member.guild.channels.cache.get(freemarket).send({
             embeds: [{
                 color: 15844367,
                 author: {
@@ -14,5 +15,8 @@ module.exports = {
                 footer: { text: 'A casul left us.' }
             }]
         }).catch(err => { });
+        
+        let memberCount = member.guild.memberCount;
+        member.guild.channels.cache.get('979831700257386496').setName(`Members: ${memberCount}`);
     }
 };

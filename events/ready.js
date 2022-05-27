@@ -8,5 +8,8 @@ module.exports = {
 			type: "STREAMING",
 			url: "https://www.twitch.tv/directory/game/Elden%20Ring"
 		});
+
+		let memberCount = client.guilds.cache.get(guildId).memberCount;
+		client.guilds.cache.get(guildId).channels.cache.get('979831700257386496').setName(`Members: ${memberCount}`);
 	},
 };
