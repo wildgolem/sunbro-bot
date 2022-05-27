@@ -16,9 +16,13 @@ module.exports = {
             }]
         }).catch(err => { });
 
-        member.guild.channels.cache.get('979864263575351316').setName(`👥${member.guild.memberCount} 
-			🟢${member.guild.members.cache.filter(m => m.presence?.status == 'online').size} 
-			🌙${member.guild.members.cache.filter(m => m.presence?.status == 'idle').size} 
+        member.guild.channels.cache.get('979876930302136360').setName(`
+            👥${member.guild.members.cache.filter(m => !m.user.bot).size}
+			🤖${member.guild.members.cache.filter(m => m.user.bot).size}
+            🔊${member.guild.roles.cache.get(voice).members.size}`);
+        member.guild.channels.cache.get('979874775503618068').setName(`
+            🟢${member.guild.members.cache.filter(m => m.presence?.status == 'online').size}
+			🌙${member.guild.members.cache.filter(m => m.presence?.status == 'idle').size}
 			⛔${member.guild.members.cache.filter(m => m.presence?.status == 'dnd').size}`);
     }
 };
