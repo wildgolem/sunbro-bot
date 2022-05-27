@@ -12,12 +12,12 @@ module.exports = {
 		let guild = client.guilds.cache.get(guildId);
 		function statusCount() {
 			guild.channels.cache.get('979876930302136360').setName(`
-				👤${guild.members.cache.filter(m => !m.user.bot).size}
-				🤖${guild.members.cache.filter(m => m.user.bot).size}
+				👤${guild.members.cache.filter(m => !m.user.bot).size}  
+				🤖${guild.members.cache.filter(m => m.user.bot).size}  
 				🔊${guild.roles.cache.get(voice).members.size}`);
 			guild.channels.cache.get('979874775503618068').setName(`
-				🟢${guild.members.cache.filter(m => m.presence?.status == 'online').size}
-				🌙${guild.members.cache.filter(m => m.presence?.status == 'idle').size}
+				🟢${guild.members.cache.filter(m => m.presence?.status == 'online').size}  
+				🌙${guild.members.cache.filter(m => m.presence?.status == 'idle').size}  
 				⛔${guild.members.cache.filter(m => m.presence?.status == 'dnd').size}`);
 			guild.channels.cache.get('979867714099220490').setName(`Bowman: ${guild.roles.cache.get(bowman).members.size}`);
 			guild.channels.cache.get('979867725671317564').setName(`Magician: ${guild.roles.cache.get(magician).members.size}`);

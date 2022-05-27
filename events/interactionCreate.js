@@ -52,40 +52,30 @@ module.exports = {
                         }
                     };
                 });
-                member.guild.channels.cache.get('979867714099220490').setName(`Bowman: ${member.guild.roles.cache.get(bowman).members.size}`);
-                member.guild.channels.cache.get('979867725671317564').setName(`Magician: ${member.guild.roles.cache.get(magician).members.size}`);
-                member.guild.channels.cache.get('979867737201455124').setName(`Thief: ${member.guild.roles.cache.get(thief).members.size}`);
-                member.guild.channels.cache.get('979867748450582628').setName(`Warrior: ${member.guild.roles.cache.get(warrior).members.size}`);
-                member.guild.channels.cache.get('979867757996810311').setName(`Pirate: ${member.guild.roles.cache.get(pirate).members.size}`);
             } else if (interaction.customId == "bowman") {
                 interaction.guild.roles.fetch(bowman).then(role => {
                     member.roles.add(role);
                     member.roles.remove(casul);
-                    member.guild.channels.cache.get('979867714099220490').setName(`Bowman: ${member.guild.roles.cache.get(bowman).members.size}`);
                 });
             } else if (interaction.customId == "magician") {
                 interaction.guild.roles.fetch(magician).then(role => {
                     member.roles.add(role);
                     member.roles.remove(casul);
-                    member.guild.channels.cache.get('979867725671317564').setName(`Magician: ${member.guild.roles.cache.get(magician).members.size}`);
                 });
             } else if (interaction.customId == "thief") {
                 interaction.guild.roles.fetch(thief).then(role => {
                     member.roles.add(role);
                     member.roles.remove(casul);
-                    member.guild.channels.cache.get('979867737201455124').setName(`Thief: ${member.guild.roles.cache.get(thief).members.size}`);
                 });
             } else if (interaction.customId == "warrior") {
                 interaction.guild.roles.fetch(warrior).then(role => {
                     member.roles.add(role);
                     member.roles.remove(casul);
-                    member.guild.channels.cache.get('979867748450582628').setName(`Warrior: ${member.guild.roles.cache.get(warrior).members.size}`);
                 });
             } else if (interaction.customId == "pirate") {
                 interaction.guild.roles.fetch(pirate).then(role => {
                     member.roles.add(role);
                     member.roles.remove(casul);
-                    member.guild.channels.cache.get('979867757996810311').setName(`Pirate: ${member.guild.roles.cache.get(pirate).members.size}`);
                 });
             };
             interaction.deferUpdate();
