@@ -8,16 +8,8 @@ module.exports = {
 		if (!newVoiceState.member.user.bot) {
 			if (newVoiceState.channel) {
 				newVoiceState.member.roles.add(voice);
-				newVoiceState.member.guild.channels.cache.get('979876930302136360').setName(`
-            		👥${newVoiceState.member.guild.members.cache.filter(m => !m.user.bot).size}  
-					🤖${newVoiceState.member.guild.members.cache.filter(m => m.user.bot).size}  
-            		🔊${newVoiceState.member.guild.roles.cache.get(voice).members.size}`);
 			} else if (oldVoiceState.channel) {
 				newVoiceState.member.roles.remove(voice);
-				newVoiceState.member.guild.channels.cache.get('979876930302136360').setName(`
-            		👥${newVoiceState.member.guild.members.cache.filter(m => !m.user.bot).size}  
-					🤖${newVoiceState.member.guild.members.cache.filter(m => m.user.bot).size}  
-            		🔊${newVoiceState.member.guild.roles.cache.get(voice).members.size}`);
 			};
 		}
 
