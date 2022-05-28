@@ -1,6 +1,7 @@
 const { voice, party, mod, bowman, magician, thief, warrior, pirate } = require('../config.json');
 const { Collection } = require('discord.js');
 const voiceCollection = new Collection();
+var date = new Date().toLocaleTimeString("en-US", {timeZone: "America/Toronto", hour12: false, hour: '2-digit', minute: '2-digit'});
 module.exports = {
 	name: "voiceStateUpdate",
 	on: true,
@@ -14,7 +15,7 @@ module.exports = {
 		}
 
 		if (!oldVoiceState.channel && newVoiceState.channel.id === party) {
-			console.log(`${newVoiceState.member.user.username} created party.`);
+			console.log(`[${date}] ${newVoiceState.member.user.username} created party.`);
 			if (newVoiceState.guild.channels.cache.find(channel => channel.name === `🔓${newVoiceState.member.user.username}'s Party`)) return;
 			const temp = await newVoiceState.guild.channels.create(`🔓${newVoiceState.member.user.username}'s Party`, {
 				type: "GUILD_VOICE",
@@ -51,7 +52,7 @@ module.exports = {
 			newVoiceState.member.voice.setChannel(temp);
 			voiceCollection.set(newVoiceState.id, temp.id);
 		} else if (!newVoiceState.channel) {
-			console.log(`${newVoiceState.member.user.username} left party.`);
+			console.log(`[${date}] ${newVoiceState.member.user.username} left party.`);
 			newVoiceState.member.setNickname("").catch((e) => null);
 			if (oldVoiceState.channel.id === voiceCollection.get(newVoiceState.id)) {
 				const members = oldVoiceState.channel?.members.filter((m) => !m.user.bot).map((m) => m.id);
@@ -69,9 +70,9 @@ module.exports = {
 				};
 			};
 		} else if (!oldVoiceState.channel && newVoiceState.channel.id != party) {
-			console.log(`${newVoiceState.member.user.username} joined party.`);
+			console.log(`[${date}] ${newVoiceState.member.user.username} joined party.`);
 		} else if (oldVoiceState.channel.id != party && oldVoiceState.channel.members.size === 0) {
-			console.log(`${newVoiceState.member.user.username} changed party.`);
+			console.log(`[${date}] ${newVoiceState.member.user.username} changed party.`);
 			newVoiceState.member.setNickname("").catch((e) => null);
 			voiceCollection.set(oldVoiceState.id, null);
 			oldVoiceState.channel.delete()
@@ -112,7 +113,7 @@ module.exports = {
 				voiceCollection.set(newVoiceState.id, temp.id);
 			}
 		} else if (oldVoiceState.channel.id != party && newVoiceState.channel.id === party) {
-			console.log(`${newVoiceState.member.user.username} remade party.`);
+			console.log(`[${date}] ${newVoiceState.member.user.username} remade party.`);
 			const temp = await newVoiceState.guild.channels.create(`🔓${newVoiceState.member.user.username}'s Party`, {
 				type: "GUILD_VOICE",
 				bitrate: 128000,
