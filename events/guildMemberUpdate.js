@@ -8,7 +8,7 @@ module.exports = {
                 newMember.voice.setMute(false).catch(err => { });
                 newMember.voice.setDeaf(false).catch(err => { });
 
-                newMember.guild.channels.cache.get(freemarket).send({
+                /* newMember.guild.channels.cache.get(freemarket).send({
                     embeds: [{
                         color: 15844367,
                         author: {
@@ -16,7 +16,7 @@ module.exports = {
                             icon_url: `${newMember.user.avatarURL()}`,
                         }
                     }]
-                }).then(msg => { setTimeout(() => msg.delete().catch(err => { }), 30000) }).catch(err => { });
+                }).then(msg => { setTimeout(() => msg.delete().catch(err => { }), 30000) }).catch(err => { }); */
             } else if (!newMember.roles.cache.has(explorer) && newMember.roles.cache.has(voice)) {
                 newMember.voice.disconnect();
                 newMember.send({
