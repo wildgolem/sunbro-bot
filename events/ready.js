@@ -13,7 +13,7 @@ module.exports = {
 		function statusCount() {
 			guild.channels.cache.get('979984161165168700').setName(`
 				🌐${guild.members.cache.filter(m => !m.user.bot).size}  
-				🟢${guild.members.cache.filter(m => m.presence?.status == 'online').size}  
+				🟢${guild.members.cache.filter(m => m.presence?.status == 'online' && !m.user.bot).size}  
 				🌙${guild.members.cache.filter(m => m.presence?.status == 'idle').size}  
 				⛔${guild.members.cache.filter(m => m.presence?.status == 'dnd').size}`);
 			guild.channels.cache.get('979867714099220490').setName(`𝙱𝚘𝚠𝚖𝚊𝚗: ${guild.roles.cache.get(bowman).members.size}`);
