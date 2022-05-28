@@ -81,7 +81,7 @@ module.exports = {
 				console.log(`[${date}] ${newVoiceState.member.user.username} deleted party.`);
 				await oldVoiceState.channel.delete();
 				await oldVoiceState.member.setNickname("").catch((e) => null);
-				await voiceCollection.set(oldVoiceState.id, null);
+				voiceCollection.set(oldVoiceState.id, null);
 			} else if (!newVoiceState.channel) {
 				console.log(`[${date}] ${newVoiceState.member.user.username} left party.`);
 				await oldVoiceState.member.setNickname("").catch((e) => null);
