@@ -28,6 +28,6 @@ module.exports = {
 
 		setInterval(() => {
 			statusCount();
-		}, 60000);
+		}, 300000);
 	},
 };
