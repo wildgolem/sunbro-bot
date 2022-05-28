@@ -41,7 +41,7 @@ module.exports = {
 			}).catch(err => { });
 			await newVoiceState.member.setNickname(`${newVoiceState.member.user.username} 🔑`).catch((e) => null);
 			await newVoiceState.member.voice.setChannel(temp);
-			await voiceCollection.set(newVoiceState.id, temp.id);
+			voiceCollection.set(newVoiceState.id, temp.id);
 		};
 
 		async function giveKey () {
@@ -53,8 +53,8 @@ module.exports = {
 					await randomMember.setNickname(`${randomMember.user.username} 🔑`).catch((e) => null);
 					await oldVoiceState.channel.setName(`🔓${randomMember.user.username}'𝚜 𝚙𝚊𝚛𝚝𝚢`).catch((e) => null);
 					await randomMember.voice.setChannel(oldVoiceState.channel);
-					await voiceCollection.set(oldVoiceState.id, null);
-					await voiceCollection.set(randomMember.id, oldVoiceState.channel.id);
+					voiceCollection.set(oldVoiceState.id, null);
+					voiceCollection.set(randomMember.id, oldVoiceState.channel.id);
 				};
 			};
 		};
