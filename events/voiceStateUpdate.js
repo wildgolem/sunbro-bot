@@ -1,11 +1,11 @@
 const { voice, party, mod, bowman, magician, thief, warrior, pirate } = require('../config.json');
 const { Collection } = require('discord.js');
 const voiceCollection = new Collection();
-var date = new Date().toLocaleTimeString("en-US", {timeZone: "America/Toronto", hour12: false, hour: '2-digit', minute: '2-digit'});
 module.exports = {
 	name: "voiceStateUpdate",
 	on: true,
 	async execute(oldVoiceState, newVoiceState) {
+		var date = new Date().toLocaleTimeString("en-US", {timeZone: "America/Toronto", hour12: false, hour: '2-digit', minute: '2-digit'});
 		if (!newVoiceState.member.user.bot) {
 			if (newVoiceState.channel) {
 				newVoiceState.member.roles.add(voice);
