@@ -11,11 +11,8 @@ module.exports = {
 
 		let guild = client.guilds.cache.get(guildId);
 		function statusCount() {
-			guild.channels.cache.get('979876930302136360').setName(`
+			guild.channels.cache.get('979911051787268176').setName(`
 				👤${guild.members.cache.filter(m => !m.user.bot).size}  
-				🤖${guild.members.cache.filter(m => m.user.bot).size}  
-				🔊${guild.roles.cache.get(voice).members.size}`);
-			guild.channels.cache.get('979874775503618068').setName(`
 				🟢${guild.members.cache.filter(m => m.presence?.status == 'online').size}  
 				🌙${guild.members.cache.filter(m => m.presence?.status == 'idle').size}  
 				⛔${guild.members.cache.filter(m => m.presence?.status == 'dnd').size}`);
