@@ -5,7 +5,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('soundboard')
 		.setDescription('Replies with roles that user can set.'),
-	async execute(message) {
+	execute(message) {
 		const channel = message.member.voice.channel;
 		if(!channel) return;
 
