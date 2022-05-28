@@ -1,4 +1,4 @@
-const { guildId, voice, bowman, magician, thief, warrior, pirate } = require('../config.json');
+const { guildId, bowman, magician, thief, warrior, pirate } = require('../config.json');
 module.exports = {
 	name: 'ready',
 	once: true,
