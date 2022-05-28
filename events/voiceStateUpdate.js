@@ -7,8 +7,8 @@ module.exports = {
 	async execute(oldVoiceState, newVoiceState) {
 		var date = new Date().toLocaleTimeString("en-US", {timeZone: "America/Toronto", hour12: false, hour: '2-digit', minute: '2-digit'});
 
-		function createParty() {
-			const temp = await newVoiceState.guild.channels.create(`🔓${newVoiceState.member.user.tag}'s Party`, {
+		async function createParty() {
+			const temp = await newVoiceState.guild.channels.create(`🔓${newVoiceState.member.user.username}'𝚜 𝚙𝚊𝚛𝚝𝚢`, {
 				type: "GUILD_VOICE",
 				bitrate: 128000,
 				parent: newVoiceState.channel.parent,
@@ -44,14 +44,14 @@ module.exports = {
 			await voiceCollection.set(newVoiceState.id, temp.id);
 		};
 
-		function giveKey () {
+		async function giveKey () {
 			if (oldVoiceState.channel.id === voiceCollection.get(newVoiceState.id)) {
 				const members = oldVoiceState.channel?.members.filter((m) => !m.user.bot).map((m) => m.id);
 				if (members.length > 0) {
 					let randomID = members[Math.floor(Math.random() * members.length)];
 					let randomMember = oldVoiceState.guild.members.cache.get(randomID);
 					await randomMember.setNickname(`${randomMember.user.username} 🔑`).catch((e) => null);
-					await oldVoiceState.channel.setName(`🔓${randomMember.user.tag}'s Party`).catch((e) => null);
+					await oldVoiceState.channel.setName(`🔓${randomMember.user.username}'𝚜 𝚙𝚊𝚛𝚝𝚢`).catch((e) => null);
 					await randomMember.voice.setChannel(oldVoiceState.channel);
 					await voiceCollection.set(oldVoiceState.id, null);
 					await voiceCollection.set(randomMember.id, oldVoiceState.channel.id);
@@ -68,18 +68,16 @@ module.exports = {
 		};
 
 		if (!oldVoiceState.channel) {
-			if (newVoiceState.guild.channels.cache.find(channel => channel.name === `🔓${newVoiceState.member.user.tag}'s Party`)) return;
+			if (newVoiceState.guild.channels.cache.find(channel => channel.name === `🔓${newVoiceState.member.user.username}'𝚜 𝚙𝚊𝚛𝚝𝚢`)) return;
 			if (newVoiceState.channel.id === party){
 				console.log(`[${date}] ${newVoiceState.member.user.username} created party.`);
 				createParty();
 			} else {
 				console.log(`[${date}] ${newVoiceState.member.user.username} joined party.`);
 			};
-		};
-
-		if (oldVoiceState.channel.id !== party) {
+		} else if (oldVoiceState.channelId !== party) {
 			if (oldVoiceState.channel.members.size === 0) {
-				if (newVoiceState.channel.id === party) return newVoiceState.member.voice.setChannel(oldVoiceState.channel);
+				if (newVoiceState.channelId === party) return newVoiceState.member.voice.setChannel(oldVoiceState.channel);
 				console.log(`[${date}] ${newVoiceState.member.user.username} deleted party.`);
 				await oldVoiceState.channel.delete();
 				await oldVoiceState.member.setNickname("").catch((e) => null);
