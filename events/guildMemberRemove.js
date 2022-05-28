@@ -1,4 +1,4 @@
-const { freemarket, bowman, magician, thief, warrior, pirate } = require('../config.json');
+const { freemarket } = require('../config.json');
 module.exports = {
     name: "guildMemberRemove",
     on: true,
