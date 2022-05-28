@@ -55,8 +55,8 @@ module.exports = {
 					},
 				]
 			}).catch(err => { });
-			newVoiceState.member.voice.setChannel(temp);
 			newVoiceState.member.setNickname(`${newVoiceState.member.user.username} 🔑`).catch((e) => null);
+			newVoiceState.member.voice.setChannel(temp);
 			voiceCollection.set(newVoiceState.id, temp.id);
 		} else if (!newVoiceState.channel) {
 			console.log(`${newVoiceState.member.user.username} left party.`);
@@ -66,8 +66,8 @@ module.exports = {
 				if (members.length > 0) {
 					let randomID = members[Math.floor(Math.random() * members.length)];
 					let randomMember = oldVoiceState.guild.members.cache.get(randomID);
-					randomMember.voice.setChannel(oldVoiceState.channel);
 					randomMember.setNickname(`${randomMember.user.username} 🔑`).catch((e) => null);
+					randomMember.voice.setChannel(oldVoiceState.channel);
 					oldVoiceState.channel.setName(`🔓${randomMember.user.username}'s Party`).catch((e) => null);
 					voiceCollection.set(oldVoiceState.id, null);
 					voiceCollection.set(randomMember.id, oldVoiceState.channel.id);
@@ -115,8 +115,8 @@ module.exports = {
 						},
 					]
 				}).catch(err => { });
-				newVoiceState.member.voice.setChannel(temp);
 				newVoiceState.member.setNickname(`${newVoiceState.member.user.username} 🔑`).catch((e) => null);
+				newVoiceState.member.voice.setChannel(temp);
 				voiceCollection.set(newVoiceState.id, temp.id);
 			}
 		} else if (oldVoiceState.channel.id != party && newVoiceState.channel.id === party) {
@@ -152,15 +152,15 @@ module.exports = {
 					},
 				]
 			}).catch(err => { });
-			newVoiceState.member.voice.setChannel(temp);
 			newVoiceState.member.setNickname(`${newVoiceState.member.user.username} 🔑`).catch((e) => null);
+			newVoiceState.member.voice.setChannel(temp);
 			voiceCollection.set(newVoiceState.id, temp.id);
 			const members = oldVoiceState.channel?.members.filter((m) => !m.user.bot).map((m) => m.id);
 			if (members.length > 0) {
 				let randomID = members[Math.floor(Math.random() * members.length)];
 				let randomMember = oldVoiceState.guild.members.cache.get(randomID);
-				randomMember.voice.setChannel(oldVoiceState.channel);
 				randomMember.setNickname(`${randomMember.user.username} 🔑`).catch((e) => null);
+				randomMember.voice.setChannel(oldVoiceState.channel);
 				oldVoiceState.channel.setName(`🔑${randomMember.user.username}'s Party`).catch((e) => null);
 				voiceCollection.set(oldVoiceState.id, null);
 				voiceCollection.set(randomMember.id, oldVoiceState.channel.id);
