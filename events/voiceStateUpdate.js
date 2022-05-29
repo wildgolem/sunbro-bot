@@ -73,7 +73,7 @@ module.exports = {
 				adapterCreator: newVoiceState.guild.voiceAdapterCreator,
 			});
 
-			resource.volume.setVolume(0.2);
+			resource.volume.setVolume(0.1);
 			player.play(resource);
 			connection.subscribe(player);
 
