@@ -1,4 +1,4 @@
-const { voice, party, mod, bowman, magician, thief, warrior, pirate } = require('../config.json');
+const { voice, party, status, bowmanStat, magicianStat, thiefStat, warriorStat, pirateStat, mod, bowman, magician, thief, warrior, pirate } = require('../config.json');
 const { Collection } = require('discord.js');
 const voiceDiscord = require('@discordjs/voice');
 const voiceCollection = new Collection();
@@ -60,12 +60,11 @@ module.exports = {
 			};
 		};
 
-		function emotionalDamage() {
+		function welcomeAudio(resource) {
 			const channel = newVoiceState.member.voice.channel;
 			if (!channel) return;
 
 			const player = voiceDiscord.createAudioPlayer();
-			const resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/979172537193877504/979173073968308274/emotional_damage.mp3', { inlineVolume: true });
 
 			const connection = voiceDiscord.joinVoiceChannel({
 				channelId: channel.id,
@@ -90,11 +89,16 @@ module.exports = {
 			};
 
 			if (newVoiceState.channel && oldVoiceState.channelId !== newVoiceState.channelId) {
+				let resource;
 				if (newVoiceState.member.user.id === '394712735520391171') {
-					setTimeout(function () {
-						emotionalDamage();
-					}, 1000);
+					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/979172537193877504/979173073968308274/emotional_damage.mp3', { inlineVolume: true });
 				}
+				
+				if (typeof resource !== 'undefined') {
+					setTimeout(function () {
+						welcomeAudio(resource);
+					}, 1000);
+				};
 			};
 
 			if (!oldVoiceState.channel) {
@@ -105,7 +109,9 @@ module.exports = {
 				} else {
 					console.log(`[${date}] ${newVoiceState.member.user.username} joined party.`);
 				};
-			} else if (oldVoiceState.channelId !== party && oldVoiceState.channel.members.size === 0) {
+			} else if (oldVoiceState.channelId !== party && oldVoiceState.channelId !== status && oldVoiceState.channelId !== bowmanStat &&
+					oldVoiceState.channelId !== magicianStat && oldVoiceState.channelId !== thiefStat && oldVoiceState.channelId !== warriorStat &&
+					oldVoiceState.channelId !== pirateStat && oldVoiceState.channel.members.size === 0) {
 				if (newVoiceState.channelId === party) return newVoiceState.member.voice.setChannel(oldVoiceState.channel);
 				console.log(`[${date}] ${newVoiceState.member.user.username} deleted party.`);
 				await oldVoiceState.channel.delete();
