@@ -1,4 +1,5 @@
 const { voice, party, status, bowmanStat, magicianStat, thiefStat, warriorStat, pirateStat, mod, bowman, magician, thief, warrior, pirate } = require('../config.json');
+const { khang, lai, vince } = require('../config.json');
 const { Collection } = require('discord.js');
 const voiceDiscord = require('@discordjs/voice');
 const voiceCollection = new Collection();
@@ -90,10 +91,12 @@ module.exports = {
 
 			if (newVoiceState.channel && oldVoiceState.channelId !== newVoiceState.channelId) {
 				let resource;
-				if (newVoiceState.member.user.id === '394712735520391171') {
+				if (newVoiceState.member.user.id === khang) {
 					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/979172537193877504/979173073968308274/emotional_damage.mp3', { inlineVolume: true });
-				} else if (newVoiceState.member.user.id === '172105676854657024') {
+				} else if (newVoiceState.member.user.id === lai) {
 					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/979172537193877504/980263332458164255/lai_lai.mp3', { inlineVolume: true });
+				} else if (newVoiceState.member.user.id === vince) {
+					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/979172537193877504/980264553411649596/ara_ara.mp3', { inlineVolume: true });
 				}
 				
 				if (typeof resource !== 'undefined') {
