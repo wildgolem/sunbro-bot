@@ -1,5 +1,5 @@
 const { voice, party, status, bowmanStat, magicianStat, thiefStat, warriorStat, pirateStat, mod, bowman, magician, thief, warrior, pirate } = require('../config.json');
-const { khang, lai, vince, pei, hai } = require('../config.json');
+const { khang, lai, vince, pei, hai, ben } = require('../config.json');
 const { Collection } = require('discord.js');
 const voiceDiscord = require('@discordjs/voice');
 const voiceCollection = new Collection();
@@ -101,6 +101,8 @@ module.exports = {
 					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/979172537193877504/980272562158321714/miss_pei_yao_han.mp3', { inlineVolume: true });
 				} else if (newVoiceState.member.user.id === hai) {
 					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/979172537193877504/980337408195330108/masters_so_big.mp3', { inlineVolume: true });
+				} else if (newVoiceState.member.user.id === ben) {
+					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/979172537193877504/980573730868699176/watashi_ga_kita.mp3', { inlineVolume: true });
 				}
 				
 				if (typeof resource !== 'undefined') {
