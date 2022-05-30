@@ -11,7 +11,7 @@ module.exports = {
                     name: `${member.user.username},`,
                     icon_url: `${member.user.avatarURL()}`,
                 },
-                image: { url: 'https://cdn.discordapp.com/attachments/979172537193877504/979176398348484719/you_died.png' },
+                image: { url: 'https://cdn.discordapp.com/attachments/980907403279228958/980913466393129030/you_died.png' },
                 footer: { text: 'A casul left us.' }
             }]
         }).catch(err => { });

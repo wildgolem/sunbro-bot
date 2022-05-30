@@ -12,7 +12,7 @@ module.exports = {
                     name: `Praise the sun, ${member.user.username}!`,
                     icon_url: `${member.user.avatarURL()}`,
                 },
-                image: { url: 'https://cdn.discordapp.com/attachments/979172537193877504/979174871068196914/praise_the_sun.png' }
+                image: { url: 'https://cdn.discordapp.com/attachments/980907403279228958/980913140428570704/praise_the_sun.png' }
             }]
         }).catch(err => { });
     }

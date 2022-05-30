@@ -37,7 +37,7 @@ module.exports = {
       .setColor("#f1c40f")
       .setTitle("Howdy, casul.")
       .setFooter({text: "Select your class :"})
-      .setImage('https://cdn.discordapp.com/attachments/979172537193877504/979172945396129792/bonfire.png');
+      .setImage('https://cdn.discordapp.com/attachments/980907403279228958/980914101029072926/bonfire.png');
 		await interaction.channel.send({ embeds: [embedMessage], components: [row] });
 	},
 };
