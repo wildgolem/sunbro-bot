@@ -10,7 +10,7 @@ module.exports = {
 		var date = new Date().toLocaleTimeString("en-US", { timeZone: "America/Toronto", hour12: false, hour: '2-digit', minute: '2-digit' });
 
 		async function createParty() {
-			const temp = await newVoiceState.guild.channels.create(`🔓${newVoiceState.member.user.username}'𝚜 𝚙𝚊𝚛𝚝𝚢`, {
+			const temp = await newVoiceState.guild.channels.create(`🔓︱${newVoiceState.member.user.username}'𝚜 𝚙𝚊𝚛𝚝𝚢`, {
 				type: "GUILD_VOICE",
 				bitrate: 128000,
 				parent: newVoiceState.channel.parent,
@@ -53,7 +53,7 @@ module.exports = {
 					let randomID = members[Math.floor(Math.random() * members.length)];
 					let randomMember = oldVoiceState.guild.members.cache.get(randomID);
 					await randomMember.setNickname(`${randomMember.user.username} 🔑`).catch((e) => null);
-					await oldVoiceState.channel.setName(`🔓${randomMember.user.username}'𝚜 𝚙𝚊𝚛𝚝𝚢`).catch((e) => null);
+					await oldVoiceState.channel.setName(`🔓︱${randomMember.user.username}'𝚜 𝚙𝚊𝚛𝚝𝚢`).catch((e) => null);
 					await randomMember.voice.setChannel(oldVoiceState.channel);
 					voiceCollection.set(oldVoiceState.id, null);
 					voiceCollection.set(randomMember.id, oldVoiceState.channel.id);
@@ -115,7 +115,7 @@ module.exports = {
 			};
 
 			if (!oldVoiceState.channel) {
-				if (newVoiceState.guild.channels.cache.find(channel => channel.name === `🔓${newVoiceState.member.user.username}'𝚜 𝚙𝚊𝚛𝚝𝚢`)) return;
+				if (newVoiceState.guild.channels.cache.find(channel => channel.name === `🔓︱${newVoiceState.member.user.username}'𝚜 𝚙𝚊𝚛𝚝𝚢`)) return;
 				if (newVoiceState.channel.id === party) {
 					console.log(`[${date}] ${newVoiceState.member.user.username} created party.`);
 					createParty();
