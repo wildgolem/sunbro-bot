@@ -15,9 +15,9 @@ module.exports = {
 			);
     const embedMessage = new MessageEmbed()
       .setColor("#f1c40f")
-      .setTitle("Change of heart ?")
-      .setFooter({text: "Roll the die :"})
-      .setImage('https://cdn.discordapp.com/attachments/980907403279228958/980914101029072926/bonfire.png');
+      .setTitle("Not 4/4? Go agane.")
+      .setFooter({text: "Roll the die to change class:"})
+      .setImage('https://cdn.discordapp.com/attachments/980907403279228958/980921175158960218/rolling.png');
 		await interaction.channel.send({ embeds: [embedMessage], components: [row] });
 	},
 };
