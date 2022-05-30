@@ -1,4 +1,4 @@
-const { guildId, bowman, magician, thief, warrior, pirate } = require('../config.json');
+const { guildId, party, status, bowmanStat, magicianStat, thiefStat, warriorStat, pirateStat, bowman, magician, thief, warrior, pirate } = require('../config.json');
 module.exports = {
 	name: 'ready',
 	once: true,
@@ -10,6 +10,12 @@ module.exports = {
 		});
 
 		let guild = client.guilds.cache.get(guildId);
+
+		guild.channels.cache.forEach((channel) => { 
+			if(channel.id !== party && channel.id !== status && channel.id !== bowmanStat && channel.id !== magicianStat &&
+				channel.id !== thiefStat && channel.id !== warriorStat && channel.id !== pirateStat) channel.delete()
+		})
+
 		function statusCount() {
 			guild.channels.cache.get('979984161165168700').setName(`
 			🌐 ${guild.members.cache.filter(m => !m.user.bot).size} 

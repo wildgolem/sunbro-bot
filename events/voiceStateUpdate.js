@@ -92,7 +92,7 @@ module.exports = {
 			if (newVoiceState.channel && oldVoiceState.channelId !== newVoiceState.channelId) {
 				let resource;
 				if (newVoiceState.member.user.id === khang) {
-					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/979172537193877504/979173073968308274/emotional_damage.mp3', { inlineVolume: true });
+					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/979172537193877504/980898134127415346/emotional_damage.mp3', { inlineVolume: true });
 				} else if (newVoiceState.member.user.id === lai) {
 					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/979172537193877504/980688989935767552/lai_lai.mp3', { inlineVolume: true });
 				} else if (newVoiceState.member.user.id === vince) {
