@@ -11,9 +11,11 @@ module.exports = {
 
 		let guild = client.guilds.cache.get(guildId);
 
-		guild.channels.cache.forEach((channel) => { 
-			if(channel.id !== party && channel.id !== status && channel.id !== bowmanStat && channel.id !== magicianStat &&
-				channel.id !== thiefStat && channel.id !== warriorStat && channel.id !== pirateStat) channel.delete()
+		guild.channels.cache.forEach((channel) => {
+			if (channel.type === 'voice') {
+				if(channel.id !== party && channel.id !== status && channel.id !== bowmanStat && channel.id !== magicianStat &&
+					channel.id !== thiefStat && channel.id !== warriorStat && channel.id !== pirateStat) channel.delete()
+			}
 		})
 
 		function statusCount() {
