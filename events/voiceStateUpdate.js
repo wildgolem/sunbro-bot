@@ -98,7 +98,7 @@ module.exports = {
 				} else if (newVoiceState.member.user.id === vince) {
 					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/979172537193877504/980264553411649596/ara_ara.mp3', { inlineVolume: true });
 				} else if (newVoiceState.member.user.id === pei) {
-					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/979172537193877504/980272562158321714/miss_pei_yao_han.mp3', { inlineVolume: true });
+					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/979172537193877504/980894537503363072/cmt_taimes_coh.mp3', { inlineVolume: true });
 				} else if (newVoiceState.member.user.id === hai) {
 					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/979172537193877504/980337408195330108/masters_so_big.mp3', { inlineVolume: true });
 				} else if (newVoiceState.member.user.id === ben) {
