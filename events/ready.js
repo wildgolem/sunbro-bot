@@ -11,13 +11,6 @@ module.exports = {
 
 		let guild = client.guilds.cache.get(guildId);
 
-		guild.channels.cache.forEach((channel) => {
-			if (channel.type === 'GUILD_VOICE') {
-				if(channel.id !== party && channel.id !== status && channel.id !== bowmanStat && channel.id !== magicianStat &&
-					channel.id !== thiefStat && channel.id !== warriorStat && channel.id !== pirateStat) channel.delete()
-			}
-		})
-
 		function statusCount() {
 			guild.channels.cache.get(status).setName(`
 			🌐 ${guild.members.cache.filter(m => !m.user.bot).size} 
