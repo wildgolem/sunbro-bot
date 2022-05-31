@@ -89,31 +89,6 @@ module.exports = {
 				newVoiceState.member.roles.remove(voice);
 			};
 
-			if (newVoiceState.channel && oldVoiceState.channelId !== newVoiceState.channelId) {
-				let resource;
-				if (newVoiceState.member.user.id === khang) {
-					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/980907403279228958/980913781574107156/emotional_damage.mp3', { inlineVolume: true });
-				} else if (newVoiceState.member.user.id === lai) {
-					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/980907403279228958/980913782102585444/lai_lai.mp3', { inlineVolume: true });
-				} else if (newVoiceState.member.user.id === vince) {
-					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/980907403279228958/980913780923961444/ara_ara.mp3', { inlineVolume: true });
-				} else if (newVoiceState.member.user.id === pei) {
-					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/980907403279228958/980913781196615710/cmt_taimes_coh.mp3', { inlineVolume: true });
-				} else if (newVoiceState.member.user.id === hai) {
-					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/980907403279228958/980913782383583282/masters_so_big.mp3', { inlineVolume: true });
-				} else if (newVoiceState.member.user.id === ben) {
-					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/980907403279228958/980913782840754246/watashi_ga_kita.mp3', { inlineVolume: true });
-				} else if (newVoiceState.member.user.id === cody) {
-					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/980907403279228958/980913781888651284/fuck_you_cody.mp3', { inlineVolume: true });
-				}
-				
-				if (typeof resource !== 'undefined') {
-					setTimeout(function () {
-						welcomeAudio(resource);
-					}, 1500);
-				};
-			};
-
 			if (!oldVoiceState.channel) {
 				if (newVoiceState.guild.channels.cache.find(channel => channel.name === `🔓︱${newVoiceState.member.user.username}'𝚜 𝚙𝚊𝚛𝚝𝚢`)) return;
 				if (newVoiceState.channel.id === party) {
@@ -138,6 +113,31 @@ module.exports = {
 				console.log(`[${date}] ${newVoiceState.member.user.username} left party.`);
 				await oldVoiceState.member.setNickname("").catch((e) => null);
 				giveKey();
+			};
+
+			if (newVoiceState.channel && oldVoiceState.channelId !== newVoiceState.channelId) {
+				let resource;
+				if (newVoiceState.member.user.id === khang) {
+					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/980907403279228958/980913781574107156/emotional_damage.mp3', { inlineVolume: true });
+				} else if (newVoiceState.member.user.id === lai) {
+					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/980907403279228958/980913782102585444/lai_lai.mp3', { inlineVolume: true });
+				} else if (newVoiceState.member.user.id === vince) {
+					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/980907403279228958/980913780923961444/ara_ara.mp3', { inlineVolume: true });
+				} else if (newVoiceState.member.user.id === pei) {
+					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/980907403279228958/980913781196615710/cmt_taimes_coh.mp3', { inlineVolume: true });
+				} else if (newVoiceState.member.user.id === hai) {
+					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/980907403279228958/980913782383583282/masters_so_big.mp3', { inlineVolume: true });
+				} else if (newVoiceState.member.user.id === ben) {
+					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/980907403279228958/980913782840754246/watashi_ga_kita.mp3', { inlineVolume: true });
+				} else if (newVoiceState.member.user.id === cody) {
+					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/980907403279228958/980913781888651284/fuck_you_cody.mp3', { inlineVolume: true });
+				}
+				
+				if (typeof resource !== 'undefined') {
+					setTimeout(function () {
+						welcomeAudio(resource);
+					}, 1500);
+				};
 			};
 		};
 	}
