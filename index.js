@@ -2,33 +2,48 @@ const fs = require('node:fs');
 const { Client, Collection, Intents } = require('discord.js');
 const { token } = require('./config.json');
 
-const client = new Client({ 
-    intents: [
-        Intents.FLAGS.GUILDS, 
-        Intents.FLAGS.GUILD_MEMBERS, 
-        Intents.FLAGS.GUILD_MESSAGES,
-        Intents.FLAGS.GUILD_PRESENCES,
-        Intents.FLAGS.GUILD_VOICE_STATES
-    ]
+const client = new Client({
+  intents: [
+    Intents.FLAGS.GUILDS,
+    Intents.FLAGS.GUILD_MEMBERS,
+    Intents.FLAGS.GUILD_MESSAGES,
+    Intents.FLAGS.GUILD_PRESENCES,
+    Intents.FLAGS.GUILD_VOICE_STATES
+  ]
 });
 
 client.commands = new Collection();
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith(".js"));
-for(const file of commandFiles) {
+for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
 
   client.commands.set(command.data.name, command);
 }
 
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith(".js"));
-for(const file of eventFiles) {
+for (const file of eventFiles) {
   const event = require(`./events/${file}`);
-  if(event.once) {
+  if (event.once) {
     client.once(event.name, (...args) => event.execute(...args, client));
   } else {
     client.on(event.name, (...args) => event.execute(...args, client));
   }
 }
+
+
+
+const { DiscordTogether } = require('discord-together');
+client.discordTogether = new DiscordTogether(client);
+
+client.on('messageCreate', async message => {
+  if (message.content === 'youtubetogether') {
+    if (message.member.voice.channel) {
+      client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'youtube').then(async invite => {
+        return message.channel.send(`${invite.code}`);
+      });
+    };
+  };
+});
 
 client.login(token);

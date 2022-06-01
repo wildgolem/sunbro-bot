@@ -98,8 +98,8 @@ module.exports = {
 					console.log(`[${date}] ${newVoiceState.member.user.username} joined party.`);
 				};
 			} else if (oldVoiceState.channelId !== party && oldVoiceState.channelId !== status && oldVoiceState.channelId !== bowmanStat &&
-					oldVoiceState.channelId !== magicianStat && oldVoiceState.channelId !== thiefStat && oldVoiceState.channelId !== warriorStat &&
-					oldVoiceState.channelId !== pirateStat && oldVoiceState.channel.members.size === 0) {
+				oldVoiceState.channelId !== magicianStat && oldVoiceState.channelId !== thiefStat && oldVoiceState.channelId !== warriorStat &&
+				oldVoiceState.channelId !== pirateStat && oldVoiceState.channel.members.size === 0 && oldVoiceState.channelId !== '981435230571360341') {
 				if (newVoiceState.channelId === party) return newVoiceState.member.voice.setChannel(oldVoiceState.channel);
 				console.log(`[${date}] ${newVoiceState.member.user.username} deleted party.`);
 				await oldVoiceState.channel.delete();
@@ -132,7 +132,7 @@ module.exports = {
 				} else if (newVoiceState.member.user.id === cody) {
 					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/980907403279228958/980913781888651284/fuck_you_cody.mp3', { inlineVolume: true });
 				}
-				
+
 				if (typeof resource !== 'undefined') {
 					setTimeout(function () {
 						welcomeAudio(resource);
