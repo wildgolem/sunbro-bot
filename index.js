@@ -12,6 +12,8 @@ const client = new Client({
   ]
 });
 
+module.exports = client;
+
 client.commands = new Collection();
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith(".js"));
@@ -30,18 +32,5 @@ for (const file of eventFiles) {
     client.on(event.name, (...args) => event.execute(...args, client));
   }
 }
-
-/* const { DiscordTogether } = require('discord-together');
-client.discordTogether = new DiscordTogether(client);
-
-client.on('messageCreate', async message => {
-  if (message.content === 'youtubetogether') {
-    if (message.member.voice.channel) {
-      client.discordTogether.createTogetherCode(message.member.voice.channel.id, 'youtube').then(async invite => {
-        return message.channel.send(`${invite.code}`);
-      });
-    };
-  };
-}); */
 
 client.login(token);
