@@ -3,7 +3,6 @@ const { khang, lai, vince, pei, hai, ben, cody } = require('../config.json');
 const { Collection } = require('discord.js');
 const voiceDiscord = require('@discordjs/voice');
 const voiceCollection = new Collection();
-
 const client = require("../index")
 const { DiscordTogether } = require("discord-together");
 client.discordTogether = new DiscordTogether(client);
