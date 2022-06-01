@@ -31,9 +31,7 @@ for (const file of eventFiles) {
   }
 }
 
-
-
-const { DiscordTogether } = require('discord-together');
+/* const { DiscordTogether } = require('discord-together');
 client.discordTogether = new DiscordTogether(client);
 
 client.on('messageCreate', async message => {
@@ -44,6 +42,6 @@ client.on('messageCreate', async message => {
       });
     };
   };
-});
+}); */
 
 client.login(token);
