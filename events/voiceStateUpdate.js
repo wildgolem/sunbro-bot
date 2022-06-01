@@ -64,7 +64,7 @@ module.exports = {
 			};
 		};
 
-		function welcomeAudio(resource) {
+		async function welcomeAudio(resource) {
 			const channel = newVoiceState.member.voice.channel;
 			if (!channel) return;
 
@@ -76,7 +76,7 @@ module.exports = {
 				adapterCreator: newVoiceState.guild.voiceAdapterCreator,
 			});
 
-			resource.volume.setVolume(0.05);
+			await resource.volume.setVolume(0.05);
 			player.play(resource);
 			connection.subscribe(player);
 
