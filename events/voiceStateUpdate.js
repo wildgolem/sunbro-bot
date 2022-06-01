@@ -143,7 +143,7 @@ module.exports = {
 				};
 			};
 
-			if (newVoiceState.member.voice.channelId === youtube && !oldVoiceState.channel && newVoiceState.channel.members.size === 1) {
+			if (newVoiceState.member.voice.channelId === youtube && !oldVoiceState.channel && newVoiceState.channel.members.size >= 1) {
 				console.log(`[${date}] ${newVoiceState.member.user.username} opened youtube.`);
 				await client.discordTogether.createTogetherCode(newVoiceState.member.voice.channel.id, 'youtube').then(async invite => {
 					return client.channels.cache.get(freemarket).send({
@@ -159,7 +159,7 @@ module.exports = {
 						}]
 					}).then(msg => {setTimeout(() => msg.delete(), 30000)}).catch(err => { });
 				});
-			} else if (newVoiceState.member.voice.channelId === chess && !oldVoiceState.channel && newVoiceState.channel.members.size === 1) {
+			} else if (newVoiceState.member.voice.channelId === chess && !oldVoiceState.channel && newVoiceState.channel.members.size >= 1) {
 				console.log(`[${date}] ${newVoiceState.member.user.username} opened chess.`);
 				await client.discordTogether.createTogetherCode(newVoiceState.member.voice.channel.id, 'chess').then(async invite => {
 					return client.channels.cache.get(freemarket).send({
