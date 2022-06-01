@@ -1,4 +1,4 @@
-const { freemarket, youtube, voice, party, status, bowmanStat, magicianStat, thiefStat, warriorStat, pirateStat, mod, bowman, magician, thief, warrior, pirate } = require('../config.json');
+const { freemarket, youtube, chess, voice, party, status, bowmanStat, magicianStat, thiefStat, warriorStat, pirateStat, mod, bowman, magician, thief, warrior, pirate } = require('../config.json');
 const { khang, lai, vince, pei, hai, ben, cody } = require('../config.json');
 const { Collection } = require('discord.js');
 const voiceDiscord = require('@discordjs/voice');
@@ -102,7 +102,7 @@ module.exports = {
 				};
 			} else if (oldVoiceState.channelId !== party && oldVoiceState.channelId !== status && oldVoiceState.channelId !== bowmanStat &&
 				oldVoiceState.channelId !== magicianStat && oldVoiceState.channelId !== thiefStat && oldVoiceState.channelId !== warriorStat &&
-				oldVoiceState.channelId !== pirateStat && oldVoiceState.channel.members.size === 0 && oldVoiceState.channelId !== youtube) {
+				oldVoiceState.channelId !== pirateStat && oldVoiceState.channel.members.size === 0 && oldVoiceState.channelId !== youtube && oldVoiceState.channelId !== chess) {
 				if (newVoiceState.channelId === party) return newVoiceState.member.voice.setChannel(oldVoiceState.channel);
 				console.log(`[${date}] ${newVoiceState.member.user.username} deleted party.`);
 				await oldVoiceState.channel.delete();
@@ -155,6 +155,22 @@ module.exports = {
 							},
 							description: `\[[link](${invite.code})\]`,
 							image: { url: 'https://cdn.discordapp.com/attachments/980907403279228958/981583183927709746/maple_tv.png' },
+							footer: {text: '(expires in 30 seconds)'}
+						}]
+					}).then(msg => {setTimeout(() => msg.delete(), 30000)}).catch(err => { });
+				});
+			} else if (newVoiceState.member.voice.channelId === chess && !oldVoiceState.channel && newVoiceState.channel.members.size === 1) {
+				console.log(`[${date}] ${newVoiceState.member.user.username} opened chess.`);
+				await client.discordTogether.createTogetherCode(newVoiceState.member.voice.channel.id, 'chess').then(async invite => {
+					return client.channels.cache.get(freemarket).send({
+						embeds: [{
+							color: 15844367,
+							author: {
+								name: `${newVoiceState.member.user.username} invites you to play chess.`,
+								icon_url: `${newVoiceState.member.user.avatarURL()}`,
+							},
+							description: `\[[link](${invite.code})\]`,
+							image: { url: 'https://cdn.discordapp.com/attachments/980907403279228958/981613351060787260/table.png' },
 							footer: {text: '(expires in 30 seconds)'}
 						}]
 					}).then(msg => {setTimeout(() => msg.delete(), 30000)}).catch(err => { });
