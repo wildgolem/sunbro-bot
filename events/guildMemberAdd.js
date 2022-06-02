@@ -1,11 +1,11 @@
-const { freemarket, explorer, casul } = require('../config.json');
+const { all, explorer, casul } = require('../config.json');
 module.exports = {
     name: "guildMemberAdd",
     on: true,
     execute(member) {
         console.log(`${member.user.username} joined the server.`);
         member.roles.add([casul, explorer]);
-        member.guild.channels.cache.get(freemarket).send({
+        member.guild.channels.cache.get(all).send({
             embeds: [{
                 color: 15844367,
                 author: {

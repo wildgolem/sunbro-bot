@@ -1,10 +1,10 @@
-const { freemarket } = require('../config.json');
+const { all } = require('../config.json');
 module.exports = {
     name: "guildMemberRemove",
     on: true,
     execute(member) {
         console.log(`${member.user.username} left the server.`);
-        member.guild.channels.cache.get(freemarket).send({
+        member.guild.channels.cache.get(all).send({
             embeds: [{
                 color: 15844367,
                 author: {

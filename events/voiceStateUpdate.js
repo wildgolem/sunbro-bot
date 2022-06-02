@@ -1,4 +1,4 @@
-const { freemarket, youtube, chess, voice, party, status, bowmanStat, magicianStat, thiefStat, warriorStat, pirateStat, mod, bowman, magician, thief, warrior, pirate } = require('../config.json');
+const { all, youtube, chess, voice, party, status, bowmanStat, magicianStat, thiefStat, warriorStat, pirateStat, mod, bowman, magician, thief, warrior, pirate } = require('../config.json');
 const { khang, lai, vince, pei, hai, ben, cody } = require('../config.json');
 const { Collection } = require('discord.js');
 const voiceDiscord = require('@discordjs/voice');
@@ -13,7 +13,7 @@ module.exports = {
 		var date = new Date().toLocaleTimeString("en-US", { timeZone: "America/Toronto", hour12: false, hour: '2-digit', minute: '2-digit' });
 
 		async function createParty() {
-			const temp = await newVoiceState.guild.channels.create(`🔓︱${newVoiceState.member.user.username}'𝚜 𝚙𝚝`, {
+			const temp = await newVoiceState.guild.channels.create(`🔓︱𝚙𝚊𝚛𝚝𝚢`, {
 				type: "GUILD_VOICE",
 				bitrate: 128000,
 				parent: newVoiceState.channel.parent,
@@ -24,30 +24,29 @@ module.exports = {
 					},
 					{
 						id: bowman,
-						allow: ['VIEW_CHANNEL', 'CONNECT', 'SPEAK', 'STREAM', 'USE_VAD']
+						allow: ['VIEW_CHANNEL', 'CONNECT', 'SPEAK', 'STREAM', 'USE_VAD', 'SEND_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'READ_MESSAGE_HISTORY', 'USE_EXTERNAL_EMOJIS', 'ADD_REACTIONS']
 					},
 					{
 						id: magician,
-						allow: ['VIEW_CHANNEL', 'CONNECT', 'SPEAK', 'STREAM', 'USE_VAD']
+						allow: ['VIEW_CHANNEL', 'CONNECT', 'SPEAK', 'STREAM', 'USE_VAD', 'SEND_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'READ_MESSAGE_HISTORY', 'USE_EXTERNAL_EMOJIS', 'ADD_REACTIONS']
 					},
 					{
 						id: thief,
-						allow: ['VIEW_CHANNEL', 'CONNECT', 'SPEAK', 'STREAM', 'USE_VAD']
+						allow: ['VIEW_CHANNEL', 'CONNECT', 'SPEAK', 'STREAM', 'USE_VAD', 'SEND_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'READ_MESSAGE_HISTORY', 'USE_EXTERNAL_EMOJIS', 'ADD_REACTIONS']
 					},
 					{
 						id: warrior,
-						allow: ['VIEW_CHANNEL', 'CONNECT', 'SPEAK', 'STREAM', 'USE_VAD']
+						allow: ['VIEW_CHANNEL', 'CONNECT', 'SPEAK', 'STREAM', 'USE_VAD', 'SEND_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'READ_MESSAGE_HISTORY', 'USE_EXTERNAL_EMOJIS', 'ADD_REACTIONS']
 					},
 					{
 						id: pirate,
-						allow: ['VIEW_CHANNEL', 'CONNECT', 'SPEAK', 'STREAM', 'USE_VAD']
+						allow: ['VIEW_CHANNEL', 'CONNECT', 'SPEAK', 'STREAM', 'USE_VAD', 'SEND_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'READ_MESSAGE_HISTORY', 'USE_EXTERNAL_EMOJIS', 'ADD_REACTIONS']
 					},
 				]
 			}).catch(err => { });
-			await newVoiceState.member.setNickname(`${newVoiceState.member.user.username} 🔑`).catch((e) => null);
+			await newVoiceState.member.setNickname(`⭐${newVoiceState.member.user.username}`).catch((e) => null);
 			await newVoiceState.member.voice.setChannel(temp);
 			voiceCollection.set(newVoiceState.id, temp.id);
-			console.log(voiceCollection);
 		};
 
 		async function giveKey() {
@@ -56,8 +55,7 @@ module.exports = {
 				if (members.length > 0) {
 					let randomID = members[Math.floor(Math.random() * members.length)];
 					let randomMember = oldVoiceState.guild.members.cache.get(randomID);
-					await randomMember.setNickname(`${randomMember.user.username} 🔑`).catch((e) => null);
-					await oldVoiceState.channel.setName(`🔓︱${randomMember.user.username}'𝚜 𝚙𝚝`).catch((e) => null);
+					await randomMember.setNickname(`⭐${randomMember.user.username}`).catch((e) => null);
 					voiceCollection.set(oldVoiceState.id, null);
 					voiceCollection.set(randomID, oldVoiceState.channelId);
 				};
@@ -93,7 +91,6 @@ module.exports = {
 			};
 
 			if (!oldVoiceState.channel) {
-				if (newVoiceState.guild.channels.cache.find(channel => channel.name === `🔓︱${newVoiceState.member.user.username}'𝚜 𝚙𝚝`)) return;
 				if (newVoiceState.channel.id === party) {
 					console.log(`[${date}] ${newVoiceState.member.user.username} created party.`);
 					createParty();
@@ -125,7 +122,7 @@ module.exports = {
 				giveKey();
 				await oldVoiceState.member.setNickname("").catch((e) => null);
 				await client.discordTogether.createTogetherCode(newVoiceState.member.voice.channel.id, 'youtube').then(async invite => {
-					return client.channels.cache.get(freemarket).send({
+					return client.channels.cache.get(all).send({
 						embeds: [{
 							color: 15844367,
 							author: {
@@ -143,7 +140,7 @@ module.exports = {
 				giveKey();
 				await oldVoiceState.member.setNickname("").catch((e) => null);
 				await client.discordTogether.createTogetherCode(newVoiceState.member.voice.channel.id, 'chess').then(async invite => {
-					return client.channels.cache.get(freemarket).send({
+					return client.channels.cache.get(all).send({
 						embeds: [{
 							color: 15844367,
 							author: {
@@ -158,7 +155,7 @@ module.exports = {
 				});
 			};
 
-			if (newVoiceState.channel && oldVoiceState.channelId !== newVoiceState.channelId) {
+			if (newVoiceState.channel && oldVoiceState.channelId !== newVoiceState.channelId && newVoiceState.channelId !== youtube && newVoiceState.channelId !== chess) {
 				let resource;
 				if (newVoiceState.member.user.id === khang) {
 					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/980907403279228958/980913781574107156/emotional_damage.mp3', { inlineVolume: true });

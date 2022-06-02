@@ -7,7 +7,7 @@ module.exports = {
 
         // ping
         if (interaction.commandName === 'ping') {
-            return interaction.reply('Pong!');
+            return interaction.reply('Pong!' + interaction.channelId);
         }
 
         // server
