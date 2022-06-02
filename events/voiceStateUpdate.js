@@ -102,7 +102,8 @@ module.exports = {
 				};
 			} else if (oldVoiceState.channelId !== party && oldVoiceState.channelId !== status && oldVoiceState.channelId !== bowmanStat &&
 				oldVoiceState.channelId !== magicianStat && oldVoiceState.channelId !== thiefStat && oldVoiceState.channelId !== warriorStat &&
-				oldVoiceState.channelId !== pirateStat && oldVoiceState.channel.members.size === 0 && oldVoiceState.channelId !== youtube && oldVoiceState.channelId !== chess) {
+				oldVoiceState.channelId !== pirateStat && oldVoiceState.channelId !== youtube && oldVoiceState.channelId !== chess && 
+				oldVoiceState.channel.members.size === 0) {
 				if (newVoiceState.channelId === party) return newVoiceState.member.voice.setChannel(oldVoiceState.channel);
 				console.log(`[${date}] ${newVoiceState.member.user.username} deleted party.`);
 				await oldVoiceState.channel.delete();
@@ -139,12 +140,13 @@ module.exports = {
 				if (typeof resource !== 'undefined') {
 					setTimeout(function () {
 						welcomeAudio(resource);
-					}, 1500);
+					}, 2000);
 				};
 			};
 
-			if (newVoiceState.member.voice.channelId === youtube && !oldVoiceState.channel && newVoiceState.channel.members.size >= 1) {
+			if (newVoiceState.member.voice.channelId === youtube && newVoiceState.channel.members.size >= 1) {
 				console.log(`[${date}] ${newVoiceState.member.user.username} opened youtube.`);
+				giveKey();
 				await client.discordTogether.createTogetherCode(newVoiceState.member.voice.channel.id, 'youtube').then(async invite => {
 					return client.channels.cache.get(freemarket).send({
 						embeds: [{
@@ -161,6 +163,7 @@ module.exports = {
 				});
 			} else if (newVoiceState.member.voice.channelId === chess && !oldVoiceState.channel && newVoiceState.channel.members.size >= 1) {
 				console.log(`[${date}] ${newVoiceState.member.user.username} opened chess.`);
+				giveKey();
 				await client.discordTogether.createTogetherCode(newVoiceState.member.voice.channel.id, 'chess').then(async invite => {
 					return client.channels.cache.get(freemarket).send({
 						embeds: [{
