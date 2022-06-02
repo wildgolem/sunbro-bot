@@ -1,4 +1,4 @@
-const { freemarket, explorer, voice } = require('../config.json');
+const { explorer, voice } = require('../config.json');
 module.exports = {
     name: "guildMemberUpdate",
     on: true,
