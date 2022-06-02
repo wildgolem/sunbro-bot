@@ -44,7 +44,7 @@ module.exports = {
 					},
 				]
 			}).catch(err => { });
-			await newVoiceState.member.setNickname(`⭐${newVoiceState.member.user.username}`).catch((e) => null);
+			await newVoiceState.member.setNickname(`⭐ ${newVoiceState.member.user.username}`).catch((e) => null);
 			await newVoiceState.member.voice.setChannel(temp);
 			voiceCollection.set(newVoiceState.id, temp.id);
 		};
@@ -55,7 +55,7 @@ module.exports = {
 				if (members.length > 0) {
 					let randomID = members[Math.floor(Math.random() * members.length)];
 					let randomMember = oldVoiceState.guild.members.cache.get(randomID);
-					await randomMember.setNickname(`⭐${randomMember.user.username}`).catch((e) => null);
+					await randomMember.setNickname(`⭐ ${randomMember.user.username}`).catch((e) => null);
 					voiceCollection.set(oldVoiceState.id, null);
 					voiceCollection.set(randomID, oldVoiceState.channelId);
 				};
