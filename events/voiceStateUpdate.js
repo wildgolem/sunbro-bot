@@ -50,7 +50,7 @@ module.exports = {
 		};
 
 		async function giveKey() {
-			if (oldVoiceState.channel.id === voiceCollection.get(newVoiceState.id)) {
+			if (oldVoiceState.channelId === voiceCollection.get(newVoiceState.id)) {
 				const members = oldVoiceState.channel?.members.filter((m) => !m.user.bot).map((m) => m.id);
 				if (members.length > 0) {
 					let randomID = members[Math.floor(Math.random() * members.length)];
@@ -119,6 +119,44 @@ module.exports = {
 				giveKey();
 			};
 
+			if (newVoiceState.member.voice.channelId === youtube && newVoiceState.channel.members.size >= 1) {
+				console.log(`[${date}] ${newVoiceState.member.user.username} opened youtube.`);
+				giveKey();
+				await oldVoiceState.member.setNickname("").catch((e) => null);
+				await client.discordTogether.createTogetherCode(newVoiceState.member.voice.channel.id, 'youtube').then(async invite => {
+					return client.channels.cache.get(freemarket).send({
+						embeds: [{
+							color: 15844367,
+							author: {
+								name: `${newVoiceState.member.user.username} invites you to watch youtube.`,
+								icon_url: `${newVoiceState.member.user.avatarURL()}`,
+							},
+							description: `\[[link](${invite.code})\]`,
+							image: { url: 'https://cdn.discordapp.com/attachments/980907403279228958/981583183927709746/maple_tv.png' },
+							footer: {text: '(expires in 30 seconds)'}
+						}]
+					}).then(msg => {setTimeout(() => msg.delete(), 30000)}).catch(err => { });
+				});
+			} else if (newVoiceState.member.voice.channelId === chess && newVoiceState.channel.members.size >= 1) {
+				console.log(`[${date}] ${newVoiceState.member.user.username} opened chess.`);
+				giveKey();
+				await oldVoiceState.member.setNickname("").catch((e) => null);
+				await client.discordTogether.createTogetherCode(newVoiceState.member.voice.channel.id, 'chess').then(async invite => {
+					return client.channels.cache.get(freemarket).send({
+						embeds: [{
+							color: 15844367,
+							author: {
+								name: `${newVoiceState.member.user.username} invites you to play chess.`,
+								icon_url: `${newVoiceState.member.user.avatarURL()}`,
+							},
+							description: `\[[link](${invite.code})\]`,
+							image: { url: 'https://cdn.discordapp.com/attachments/980907403279228958/981613351060787260/table.png' },
+							footer: {text: '(expires in 30 seconds)'}
+						}]
+					}).then(msg => {setTimeout(() => msg.delete(), 30000)}).catch(err => { });
+				});
+			};
+
 			if (newVoiceState.channel && oldVoiceState.channelId !== newVoiceState.channelId) {
 				let resource;
 				if (newVoiceState.member.user.id === khang) {
@@ -142,42 +180,6 @@ module.exports = {
 						welcomeAudio(resource);
 					}, 2000);
 				};
-			};
-
-			if (newVoiceState.member.voice.channelId === youtube && newVoiceState.channel.members.size >= 1) {
-				console.log(`[${date}] ${newVoiceState.member.user.username} opened youtube.`);
-				giveKey();
-				await client.discordTogether.createTogetherCode(newVoiceState.member.voice.channel.id, 'youtube').then(async invite => {
-					return client.channels.cache.get(freemarket).send({
-						embeds: [{
-							color: 15844367,
-							author: {
-								name: `${newVoiceState.member.user.username} invites you to watch youtube.`,
-								icon_url: `${newVoiceState.member.user.avatarURL()}`,
-							},
-							description: `\[[link](${invite.code})\]`,
-							image: { url: 'https://cdn.discordapp.com/attachments/980907403279228958/981583183927709746/maple_tv.png' },
-							footer: {text: '(expires in 30 seconds)'}
-						}]
-					}).then(msg => {setTimeout(() => msg.delete(), 30000)}).catch(err => { });
-				});
-			} else if (newVoiceState.member.voice.channelId === chess && !oldVoiceState.channel && newVoiceState.channel.members.size >= 1) {
-				console.log(`[${date}] ${newVoiceState.member.user.username} opened chess.`);
-				giveKey();
-				await client.discordTogether.createTogetherCode(newVoiceState.member.voice.channel.id, 'chess').then(async invite => {
-					return client.channels.cache.get(freemarket).send({
-						embeds: [{
-							color: 15844367,
-							author: {
-								name: `${newVoiceState.member.user.username} invites you to play chess.`,
-								icon_url: `${newVoiceState.member.user.avatarURL()}`,
-							},
-							description: `\[[link](${invite.code})\]`,
-							image: { url: 'https://cdn.discordapp.com/attachments/980907403279228958/981613351060787260/table.png' },
-							footer: {text: '(expires in 30 seconds)'}
-						}]
-					}).then(msg => {setTimeout(() => msg.delete(), 30000)}).catch(err => { });
-				});
 			};
 		};
 	}
