@@ -47,6 +47,7 @@ module.exports = {
 			await newVoiceState.member.setNickname(`${newVoiceState.member.user.username} 🔑`).catch((e) => null);
 			await newVoiceState.member.voice.setChannel(temp);
 			voiceCollection.set(newVoiceState.id, temp.id);
+			console.log(voiceCollection);
 		};
 
 		async function giveKey() {
@@ -57,9 +58,8 @@ module.exports = {
 					let randomMember = oldVoiceState.guild.members.cache.get(randomID);
 					await randomMember.setNickname(`${randomMember.user.username} 🔑`).catch((e) => null);
 					await oldVoiceState.channel.setName(`🔓︱${randomMember.user.username}'𝚜 𝚙𝚝`).catch((e) => null);
-					await randomMember.voice.setChannel(oldVoiceState.channel);
 					voiceCollection.set(oldVoiceState.id, null);
-					voiceCollection.set(randomMember.id, oldVoiceState.channel.id);
+					voiceCollection.set(randomID, oldVoiceState.channel.id);
 				};
 			};
 		};
@@ -99,6 +99,7 @@ module.exports = {
 					createParty();
 				} else {
 					console.log(`[${date}] ${newVoiceState.member.user.username} joined party.`);
+					voiceCollection.set(newVoiceState.id, newVoiceState.channel.id);
 				};
 			} else if (oldVoiceState.channelId !== party && oldVoiceState.channelId !== status && oldVoiceState.channelId !== bowmanStat &&
 				oldVoiceState.channelId !== magicianStat && oldVoiceState.channelId !== thiefStat && oldVoiceState.channelId !== warriorStat &&
