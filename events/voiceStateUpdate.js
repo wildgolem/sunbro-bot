@@ -59,7 +59,7 @@ module.exports = {
 					await randomMember.setNickname(`${randomMember.user.username} 🔑`).catch((e) => null);
 					await oldVoiceState.channel.setName(`🔓︱${randomMember.user.username}'𝚜 𝚙𝚝`).catch((e) => null);
 					voiceCollection.set(oldVoiceState.id, null);
-					voiceCollection.set(randomID, oldVoiceState.channel.id);
+					voiceCollection.set(randomID, oldVoiceState.channelId);
 				};
 			};
 		};
