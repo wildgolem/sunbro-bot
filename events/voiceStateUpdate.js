@@ -13,7 +13,7 @@ module.exports = {
 		var date = new Date().toLocaleTimeString("en-US", { timeZone: "America/Toronto", hour12: false, hour: '2-digit', minute: '2-digit' });
 
 		async function createParty() {
-			const temp = await newVoiceState.guild.channels.create(`🔓︱𝚙𝚊𝚛𝚝𝚢`, {
+			const temp = await newVoiceState.guild.channels.create(`⭕︱𝚙𝚊𝚛𝚝𝚢`, {
 				type: "GUILD_VOICE",
 				bitrate: 128000,
 				parent: newVoiceState.channel.parent,
