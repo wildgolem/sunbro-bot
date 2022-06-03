@@ -117,7 +117,7 @@ module.exports = {
 				giveKey();
 			};
 
-			if (newVoiceState.member.voice.channelId === youtube && newVoiceState.channel.members.size >= 1) {
+			if (newVoiceState.member.voice.channelId === youtube && newVoiceState.channel.members.size >= 1 && oldVoiceState.channel !== newVoiceState.channel) {
 				console.log(`[${date}] ${newVoiceState.member.user.username} opened youtube.`);
 				giveKey();
 				await oldVoiceState.member.setNickname("").catch((e) => null);
@@ -135,7 +135,7 @@ module.exports = {
 						}]
 					}).then(msg => {setTimeout(() => msg.delete(), 30000)}).catch(err => { });
 				});
-			} else if (newVoiceState.member.voice.channelId === chess && newVoiceState.channel.members.size >= 1) {
+			} else if (newVoiceState.member.voice.channelId === chess && newVoiceState.channel.members.size >= 1 && oldVoiceState.channel !== newVoiceState.channel) {
 				console.log(`[${date}] ${newVoiceState.member.user.username} opened chess.`);
 				giveKey();
 				await oldVoiceState.member.setNickname("").catch((e) => null);
