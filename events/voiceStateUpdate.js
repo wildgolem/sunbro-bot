@@ -50,9 +50,11 @@ module.exports = {
 		};
 
 		async function giveKey() {
-			if (oldVoiceState.channelId === voiceCollection.get(newVoiceState.id)) {
+			if (oldVoiceState.channelId === voiceCollection.get(newVoiceState.id) && oldVoiceState.channelId === voiceCollection.get(oldVoiceState.id)) {
+				console.log("1");
 				const members = oldVoiceState.channel?.members.filter((m) => !m.user.bot).map((m) => m.id);
 				if (members.length > 0) {
+					console.log("2");
 					let randomID = members[Math.floor(Math.random() * members.length)];
 					let randomMember = oldVoiceState.guild.members.cache.get(randomID);
 					await randomMember.setNickname(`⭐ ${randomMember.user.username}`).catch((e) => null);
