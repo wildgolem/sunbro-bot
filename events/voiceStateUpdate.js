@@ -49,7 +49,7 @@ module.exports = {
 			voiceCollection.set(newVoiceState.id, temp.id);
 		};
 
-		async function giveKey() {
+		/* async function giveKey() {
 			if (voiceCollection.get(oldVoiceState.id) && oldVoiceState.channelId === voiceCollection.get(oldVoiceState.id) && 
 			(!newVoiceState.channel || newVoiceState.channelId !== voiceCollection.get(oldVoiceState.id))) {
 				const members = oldVoiceState.channel?.members.filter((m) => !m.user.bot).map((m) => m.id);
@@ -61,9 +61,9 @@ module.exports = {
 					voiceCollection.set(randomID, oldVoiceState.channelId);
 				};
 			};
-		};
+		}; */
 
-		async function welcomeAudio(resource) {
+		/* async function welcomeAudio(resource) {
 			const channel = newVoiceState.member.voice.channel;
 			if (!channel) return;
 
@@ -82,13 +82,13 @@ module.exports = {
 			player.on(voiceDiscord.AudioPlayerStatus.Idle, () => {
 				connection.destroy();
 			});
-		};
+		}; */
 
 		if (!newVoiceState.member.user.bot) {
 			if (newVoiceState.channel) {
-				newVoiceState.member.roles.add(voice).catch(err => { });
+				await newVoiceState.member.roles.add(voice).catch(err => { });
 			} else if (oldVoiceState.channel) {
-				newVoiceState.member.roles.remove(voice).catch(err => { });
+				await newVoiceState.member.roles.remove(voice).catch(err => { });
 			};
 
 			if (!oldVoiceState.channel) {
@@ -99,9 +99,7 @@ module.exports = {
 					console.log(`[${date}] ${newVoiceState.member.user.username} joined party.`);
 					voiceCollection.set(newVoiceState.id, newVoiceState.channel.id);
 				};
-			} else if (oldVoiceState.channelId !== party && oldVoiceState.channelId !== status && oldVoiceState.channelId !== bowmanStat &&
-				oldVoiceState.channelId !== magicianStat && oldVoiceState.channelId !== thiefStat && oldVoiceState.channelId !== warriorStat &&
-				oldVoiceState.channelId !== pirateStat && oldVoiceState.channelId !== youtube && oldVoiceState.channelId !== chess && 
+			} else if (oldVoiceState.channelId !== party && oldVoiceState.channelId !== status && oldVoiceState.channelId !== youtube && oldVoiceState.channelId !== chess && 
 				oldVoiceState.channel.members.size === 0) {
 				if (newVoiceState.channelId === party) return newVoiceState.member.voice.setChannel(oldVoiceState.channel);
 				console.log(`[${date}] ${newVoiceState.member.user.username} deleted party.`);
@@ -110,17 +108,17 @@ module.exports = {
 				voiceCollection.set(oldVoiceState.id, null);
 			} else if (newVoiceState.channelId === party) {
 				console.log(`[${date}] ${newVoiceState.member.user.username} remade party.`);
-				giveKey();
+				/* giveKey(); */
 				createParty();
 			} else if (!newVoiceState.channel) {
 				console.log(`[${date}] ${newVoiceState.member.user.username} left party.`);
 				await oldVoiceState.member.setNickname("").catch((e) => null);
-				giveKey();
+				/* giveKey(); */
 			};
 
 			if (newVoiceState.member.voice.channelId === youtube && newVoiceState.channel.members.size === 1 && oldVoiceState.channel !== newVoiceState.channel) {
 				console.log(`[${date}] ${newVoiceState.member.user.username} opened youtube.`);
-				giveKey();
+				/* giveKey(); */
 				await oldVoiceState.member.setNickname("").catch((e) => null);
 				await client.discordTogether.createTogetherCode(newVoiceState.member.voice.channel.id, 'youtube').then(async invite => {
 					return client.channels.cache.get(all).send({
@@ -138,7 +136,7 @@ module.exports = {
 				});
 			} else if (newVoiceState.member.voice.channelId === chess && newVoiceState.channel.members.size === 1 && oldVoiceState.channel !== newVoiceState.channel) {
 				console.log(`[${date}] ${newVoiceState.member.user.username} opened chess.`);
-				giveKey();
+				/* giveKey(); */
 				await oldVoiceState.member.setNickname("").catch((e) => null);
 				await client.discordTogether.createTogetherCode(newVoiceState.member.voice.channel.id, 'chess').then(async invite => {
 					return client.channels.cache.get(all).send({
@@ -156,7 +154,7 @@ module.exports = {
 				});
 			};
 
-			if (newVoiceState.channel && oldVoiceState.channelId !== newVoiceState.channelId && newVoiceState.channelId !== youtube && newVoiceState.channelId !== chess) {
+			/* if (newVoiceState.channel && oldVoiceState.channelId !== newVoiceState.channelId && newVoiceState.channelId !== youtube && newVoiceState.channelId !== chess) {
 				let resource;
 				if (newVoiceState.member.user.id === khang) {
 					resource = voiceDiscord.createAudioResource('https://cdn.discordapp.com/attachments/980907403279228958/980913781574107156/emotional_damage.mp3', { inlineVolume: true });
@@ -179,7 +177,7 @@ module.exports = {
 						welcomeAudio(resource);
 					}, 2000);
 				};
-			};
+			}; */
 		};
 	}
 };
