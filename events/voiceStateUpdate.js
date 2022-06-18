@@ -44,7 +44,7 @@ module.exports = {
 					},
 				]
 			}).catch(err => { });
-			await newVoiceState.member.setNickname(`⭐ ${newVoiceState.member.user.username}`).catch((e) => null);
+			/* await newVoiceState.member.setNickname(`⭐ ${newVoiceState.member.user.username}`).catch((e) => null); */
 			await newVoiceState.member.voice.setChannel(temp);
 			voiceCollection.set(newVoiceState.id, temp.id);
 		};
@@ -104,7 +104,7 @@ module.exports = {
 				if (newVoiceState.channelId === party) return newVoiceState.member.voice.setChannel(oldVoiceState.channel);
 				console.log(`[${date}] ${newVoiceState.member.user.username} deleted party.`);
 				await oldVoiceState.channel.delete();
-				await oldVoiceState.member.setNickname("").catch((e) => null);
+				/* await oldVoiceState.member.setNickname("").catch((e) => null); */
 				voiceCollection.set(oldVoiceState.id, null);
 			} else if (newVoiceState.channelId === party) {
 				console.log(`[${date}] ${newVoiceState.member.user.username} remade party.`);
@@ -112,14 +112,14 @@ module.exports = {
 				createParty();
 			} else if (!newVoiceState.channel) {
 				console.log(`[${date}] ${newVoiceState.member.user.username} left party.`);
-				await oldVoiceState.member.setNickname("").catch((e) => null);
+				/* await oldVoiceState.member.setNickname("").catch((e) => null); */
 				/* giveKey(); */
 			};
 
 			if (newVoiceState.member.voice.channelId === youtube && newVoiceState.channel.members.size === 1 && oldVoiceState.channel !== newVoiceState.channel) {
 				console.log(`[${date}] ${newVoiceState.member.user.username} opened youtube.`);
 				/* giveKey(); */
-				await oldVoiceState.member.setNickname("").catch((e) => null);
+				/* await oldVoiceState.member.setNickname("").catch((e) => null); */
 				await client.discordTogether.createTogetherCode(newVoiceState.member.voice.channel.id, 'youtube').then(async invite => {
 					return client.channels.cache.get(all).send({
 						embeds: [{
@@ -137,7 +137,7 @@ module.exports = {
 			} else if (newVoiceState.member.voice.channelId === chess && newVoiceState.channel.members.size === 1 && oldVoiceState.channel !== newVoiceState.channel) {
 				console.log(`[${date}] ${newVoiceState.member.user.username} opened chess.`);
 				/* giveKey(); */
-				await oldVoiceState.member.setNickname("").catch((e) => null);
+				/* await oldVoiceState.member.setNickname("").catch((e) => null); */
 				await client.discordTogether.createTogetherCode(newVoiceState.member.voice.channel.id, 'chess').then(async invite => {
 					return client.channels.cache.get(all).send({
 						embeds: [{
