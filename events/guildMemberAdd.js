@@ -3,7 +3,8 @@ module.exports = {
     name: "guildMemberAdd",
     on: true,
     execute(member) {
-        console.log(`${member.user.username} joined the server.`);
+        var date = new Date().toLocaleTimeString("en-US", { timeZone: "America/Toronto", hour12: false, hour: '2-digit', minute: '2-digit' });
+        console.log(`[${date}] ${member.user.username} joined the server.`);
         member.roles.add([casul, explorer]);
         member.guild.channels.cache.get(all).send({
             embeds: [{
