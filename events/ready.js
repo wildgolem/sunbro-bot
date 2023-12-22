@@ -4,7 +4,7 @@ module.exports = {
 	name: Events.ClientReady,
 	once: true,
 	execute(client) {
-		client.user.setAvatar('./images/sunbro.png');
+		//client.user.setAvatar('./images/sunbro.png');
 		console.log(`Logged in as ${client.user.tag}!`);
         client.user.setActivity({
             name: "🇯🇵",
