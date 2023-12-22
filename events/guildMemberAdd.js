@@ -6,8 +6,8 @@ module.exports = {
 	execute(member) {
         const embed = new EmbedBuilder()
             .setColor(0x6AA84F)
-            .setTitle('Welcome to BLACKSMITH!')
-            .setDescription(`${member.user.username} has joined us.`);
+            .setImage('./images/praise_the_sun.png')
+            .setFooter(`${member.user.username} has arrived.`);
         
         const webhook = new WebhookClient({ id: process.env.crow_id, token: process.env.crow_token });
                 

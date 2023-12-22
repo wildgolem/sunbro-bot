@@ -6,8 +6,8 @@ module.exports = {
 	execute(member) {
         const embed = new EmbedBuilder()
             .setColor(0xCC0000)
-            .setTitle('An ally has been slain.')
-            .setDescription(`${member.user.username} has left us.`);
+			.setImage('./images/you_died.png')
+			.setFooter(`git gud ${member.user.username}.`);
 
 		const webhook = new WebhookClient({ id: process.env.crow_id, token: process.env.crow_token });
         
