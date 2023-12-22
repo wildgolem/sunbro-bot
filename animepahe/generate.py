@@ -23,6 +23,7 @@ def get_latest():
 def generate_rss():
     rss = f"""
 <?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
 
 <channel>
 <title>AnimePahe - RSS Feed</title>
