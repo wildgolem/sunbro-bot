@@ -16,7 +16,7 @@ client.commands = new Collection();
 event(client);
 command(client);
 
-//animepahe();
+animepahe();
 
 
 
