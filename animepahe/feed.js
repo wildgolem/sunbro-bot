@@ -1,7 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-function gogoanime() {
+function animepahe() {
     require('dotenv').config();
     const { EmbedBuilder, WebhookClient } = require('discord.js');
     const RssFeedEmitter = require('rss-feed-emitter');
@@ -43,4 +43,4 @@ async function searchImage(item) {
     }
 }
 
-module.exports = { gogoanime };
+module.exports = { animepahe };
