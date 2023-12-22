@@ -4,7 +4,12 @@ const { event } = require('./handlers/event');
 const { command } = require('./handlers/command');
 const { animepahe } = require('./animepahe/feed');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers] });
+const client = new Client({ intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.GuildVoiceStates,
+    GatewayIntentBits.GuildMessages
+] });
 
 client.commands = new Collection();
 
