@@ -18,12 +18,13 @@ function animepahe() {
     feeder.on('new-item', async function(item) {
         const embed = new EmbedBuilder()
             .setAuthor({
-                name: item.title,
+                name: `${item.title.split(" ").slice(0, -3).join(" ")}`,
                 iconURL: `${await searchImage(item)}`,
                 url: item.link
             })
             .setColor(0xD5015B)
             .setImage(`${item.description}`)
+            .setFooter(`${item.title.split(" ").splice(-2).join(" ")}`)
             .setTimestamp();
 
         webhook.send({ embeds: [embed] });
