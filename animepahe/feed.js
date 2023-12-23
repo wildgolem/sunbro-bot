@@ -24,7 +24,7 @@ function animepahe() {
             })
             .setColor(0xD5015B)
             .setImage(`${item.description}`)
-            .setFooter(`${item.title.split(" ").splice(-2).join(" ")}`)
+            .setFooter(`${item.title.split(" ").slice(-2).join(" ")}`)
             .setTimestamp();
 
         webhook.send({ embeds: [embed] });
