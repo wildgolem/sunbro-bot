@@ -16,11 +16,11 @@ function animepahe() {
     });
 
     feeder.on('new-item', function(item) {
-        const image = searchImage(item);
+        let image = searchImage(item);
         const embed = new EmbedBuilder()
             .setAuthor({
                 name: `${item.title.split(" ").slice(0, -3).join(" ")}`,
-                iconURL: `${image}`,
+                iconURL: image,
                 url: item.link
             })
             .setColor(0xD5015B)
