@@ -15,8 +15,8 @@ function animepahe() {
         refresh: 300000,
     });
 
-    feeder.on('new-item', function(item) {
-        let image = searchImage(item);
+    feeder.on('new-item', async function(item) {
+        let image = await searchImage(item);
         const embed = new EmbedBuilder()
             .setAuthor({
                 name: `${item.title.split(" ").slice(0, -3).join(" ")}`,
