@@ -15,17 +15,17 @@ function animepahe() {
         refresh: 300000,
     });
 
-    feeder.on('new-item', async function(item) {
+    feeder.on('new-item', function(item) {
+        const image = searchImage(item);
         const embed = new EmbedBuilder()
             .setAuthor({
                 name: `${item.title.split(" ").slice(0, -3).join(" ")}`,
-                iconURL: `${await searchImage(item)}`,
+                iconURL: image,
                 url: item.link
             })
             .setColor(0xD5015B)
             .setImage(`${item.description}`)
-            .setFooter({ text: `${item.title.split(" ").slice(-2).join(" ")}` })
-            .setTimestamp();
+            .setFooter({ text: `${item.title.split(" ").slice(-2).join(" ")}` });
 
         webhook.send({ embeds: [embed] });
     });
